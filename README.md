@@ -1,2 +1,2 @@
-# concog
+# ConCog
 Projeto Contabilidade Congnitiva
