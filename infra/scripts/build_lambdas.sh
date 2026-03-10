@@ -2,27 +2,53 @@
 
 set -e
 
-PROJECT_ROOT=$(pwd)
+echo "=============================="
+echo "Build das Lambdas - ConCog"
+echo "=============================="
 
-echo "Limpando builds anteriores..."
 rm -rf build
-mkdir build
+mkdir -p build
 
-echo "Instalando dependências..."
-pip install -r backend/requirements.txt -t build/
+########################################
+# Lambda cc_splitar_lancamento
+########################################
 
-echo "Copiando código backend..."
-cp -r backend build/
+echo "Preparando cc_splitar_lancamento..."
 
-echo "Criando ZIP cc-splitar-lancamento..."
+mkdir -p build/cc_splitar_tmp
 
-cd build
-zip -r ../cc-splitar-lancamento.zip .
+pip install -r backend/requirements.txt -t build/cc_splitar_tmp/
 
-cd $PROJECT_ROOT
+cp -r backend build/cc_splitar_tmp/
 
-echo "Criando ZIP cc-processar-lancamento..."
+cp backend/app/modules/conciliacao_contabil/lambdas/cc_splitar_lancamento/handler.py \
+build/cc_splitar_tmp/handler.py
 
-cp cc-splitar-lancamento.zip cc-processar-lancamento.zip
+cd build/cc_splitar_tmp
+zip -r ../cc_splitar_lancamento.zip .
+cd ../..
+
+rm -rf build/cc_splitar_tmp
+
+########################################
+# Lambda cc_processar_lancamento
+########################################
+
+echo "Preparando cc_processar_lancamento..."
+
+mkdir -p build/cc_processar_tmp
+
+pip install -r backend/requirements.txt -t build/cc_processar_tmp/
+
+cp -r backend build/cc_processar_tmp/
+
+cp backend/app/modules/conciliacao_contabil/lambdas/cc_processar_lancamento/handler.py \
+build/cc_processar_tmp/handler.py
+
+cd build/cc_processar_tmp
+zip -r ../cc_processar_lancamento.zip .
+cd ../..
+
+rm -rf build/cc_processar_tmp
 
 echo "Build finalizado."
