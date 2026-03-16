@@ -1,0 +1,7 @@
+requests
+mysql-connector-python
+groq
+python-dotenv
+langchain
+langchain-community
+langchain-groq

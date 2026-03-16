@@ -3,4 +3,4 @@ from backend.app.modules.conciliacao_contabil.services.processar_lancamento_serv
 
 def lambda_handler(event, context):
     service = ProcessarLancamentoService()
-    return service.processar(event)
+    return service.classificar(event)

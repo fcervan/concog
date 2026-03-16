@@ -108,7 +108,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-54" connectable="0" parent="1" style="group" value="" vertex="1">
-          <mxGeometry height="135" width="210" x="924" y="545" as="geometry" />
+          <mxGeometry height="135" width="210" x="924" y="540" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-29" parent="89_aUBa0Wt-oEr03Tm-Y-54" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.mysql_database;" value="" vertex="1">
           <mxGeometry height="80" width="60" x="75" as="geometry" />
