@@ -106,9 +106,10 @@ LAMBDA_ARN=$(awslocal lambda get-function \
 
 echo "Lambda ARN: $LAMBDA_ARN"
 
+
 echo ""
 echo "⏳ Aguardando serviços estabilizarem..."
-sleep 4
+sleep 10
 
 echo ""
 echo "⚡ Criando trigger S3 → Lambda..."

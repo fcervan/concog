@@ -17,7 +17,7 @@ echo "Preparando cc_splitar_lancamento..."
 
 mkdir -p build/cc_splitar_tmp
 
-pip install -r backend/requirements.txt -t build/cc_splitar_tmp/
+pip install -r requirements.txt -t build/cc_splitar_tmp/
 
 cp -r backend build/cc_splitar_tmp/
 
@@ -38,7 +38,7 @@ echo "Preparando cc_processar_lancamento..."
 
 mkdir -p build/cc_processar_tmp
 
-pip install -r backend/requirements.txt -t build/cc_processar_tmp/
+pip install -r requirements.txt -t build/cc_processar_tmp/
 
 cp -r backend build/cc_processar_tmp/
 

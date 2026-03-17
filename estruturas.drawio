@@ -1,11 +1,11 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1">
   <diagram name="CONCILIAÇÃO" id="OiCvfbXBNor5lfWmE4ln">
-    <mxGraphModel dx="1248" dy="1906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2075" dy="1906" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-12" connectable="0" parent="1" style="group" value="" vertex="1">
-          <mxGeometry height="100" width="210" x="50" y="350" as="geometry" />
+          <mxGeometry height="100" width="210" x="-30" y="350" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-9" parent="89_aUBa0Wt-oEr03Tm-Y-12" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#00188D;shape=mxgraph.azure.computer" value="" vertex="1">
           <mxGeometry height="72" width="80" x="65" y="-27" as="geometry" />
@@ -17,13 +17,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-18" connectable="0" parent="1" style="group" value="" vertex="1">
-          <mxGeometry height="133" width="210" x="467" y="320" as="geometry" />
+          <mxGeometry height="133" width="350" x="467" y="320" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-15" parent="89_aUBa0Wt-oEr03Tm-Y-18" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" value="" vertex="1">
           <mxGeometry height="78" width="78" x="66" as="geometry" />
         </mxCell>
-        <mxCell id="89_aUBa0Wt-oEr03Tm-Y-17" parent="89_aUBa0Wt-oEr03Tm-Y-18" style="text;strokeColor=none;fillColor=none;html=1;fontSize=16;fontStyle=1;verticalAlign=middle;align=center;" value="S3 (Trigger)&lt;br&gt;s3://concog/cc/arquivo-original/" vertex="1">
-          <mxGeometry height="55" width="210" y="78" as="geometry" />
+        <mxCell id="89_aUBa0Wt-oEr03Tm-Y-17" parent="89_aUBa0Wt-oEr03Tm-Y-18" style="text;strokeColor=none;fillColor=none;html=1;fontSize=16;fontStyle=1;verticalAlign=middle;align=center;" value="S3 (Trigger)&lt;br&gt;s3://concog/cc/arquivo-original/AAAA/MM/DD/cliente_id/usuario_id/" vertex="1">
+          <mxGeometry height="55" width="490" x="-140" y="78" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-20" edge="1" parent="1" source="89_aUBa0Wt-oEr03Tm-Y-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="89_aUBa0Wt-oEr03Tm-Y-19">
           <mxGeometry relative="1" as="geometry" />
@@ -43,7 +43,7 @@
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-25" parent="89_aUBa0Wt-oEr03Tm-Y-24" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" value="" vertex="1">
           <mxGeometry height="78" width="78" x="66" as="geometry" />
         </mxCell>
-        <mxCell id="89_aUBa0Wt-oEr03Tm-Y-26" parent="89_aUBa0Wt-oEr03Tm-Y-24" style="text;strokeColor=none;fillColor=none;html=1;fontSize=16;fontStyle=1;verticalAlign=middle;align=center;" value="S3&lt;br&gt;s3://concog/cc/entrada/AAAA/MM/DD/" vertex="1">
+        <mxCell id="89_aUBa0Wt-oEr03Tm-Y-26" parent="89_aUBa0Wt-oEr03Tm-Y-24" style="text;strokeColor=none;fillColor=none;html=1;fontSize=16;fontStyle=1;verticalAlign=middle;align=center;" value="S3&lt;br&gt;s3://concog/cc/agrupado/AAAA/MM/DD/cliente_id/usuario_id/" vertex="1">
           <mxGeometry height="55" width="210" y="78" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-27" edge="1" parent="1" source="89_aUBa0Wt-oEr03Tm-Y-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="89_aUBa0Wt-oEr03Tm-Y-19">
@@ -62,7 +62,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-36" connectable="0" parent="1" style="group" value="" vertex="1">
-          <mxGeometry height="150" width="210" x="1344" y="320" as="geometry" />
+          <mxGeometry height="150" width="210" x="1395" y="320" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-23" parent="89_aUBa0Wt-oEr03Tm-Y-36" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;" value="" vertex="1">
           <mxGeometry height="78" width="78" x="66" as="geometry" />
@@ -92,13 +92,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-54" connectable="0" parent="1" style="group" value="" vertex="1">
-          <mxGeometry height="135" width="210" x="924" y="540" as="geometry" />
+          <mxGeometry height="135" width="240" x="924" y="540" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-29" parent="89_aUBa0Wt-oEr03Tm-Y-54" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.mysql_database;" value="" vertex="1">
           <mxGeometry height="80" width="60" x="75" as="geometry" />
         </mxCell>
-        <mxCell id="89_aUBa0Wt-oEr03Tm-Y-32" parent="89_aUBa0Wt-oEr03Tm-Y-54" style="text;strokeColor=none;fillColor=none;html=1;fontSize=16;fontStyle=1;verticalAlign=middle;align=center;" value="MySQL&lt;br&gt;View ConsultarLancamentos" vertex="1">
-          <mxGeometry height="55" width="210" y="80" as="geometry" />
+        <mxCell id="89_aUBa0Wt-oEr03Tm-Y-32" parent="89_aUBa0Wt-oEr03Tm-Y-54" style="text;strokeColor=none;fillColor=none;html=1;fontSize=16;fontStyle=1;verticalAlign=middle;align=center;" value="MySQL&lt;br&gt;Proc CadastrarGrupoLancamento" vertex="1">
+          <mxGeometry height="55" width="270" x="-30" y="80" as="geometry" />
         </mxCell>
         <mxCell id="89_aUBa0Wt-oEr03Tm-Y-56" connectable="0" parent="1" style="group" value="" vertex="1">
           <mxGeometry height="135" width="210" x="1858" y="540" as="geometry" />
