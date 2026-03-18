@@ -3,52 +3,98 @@
 set -e
 
 echo "=============================="
-echo "Build das Lambdas - ConCog"
+echo "Build das Lambdas - ConCog (OTIMIZADO)"
 echo "=============================="
 
-rm -rf build
-mkdir -p build
+BUILD_DIR="build"
+COMMON_DIR="$BUILD_DIR/common"
+
+rm -rf $BUILD_DIR
+mkdir -p $COMMON_DIR
 
 ########################################
-# Lambda cc_splitar_lancamento
+# 1. Instala dependências UMA vez
 ########################################
 
-echo "Preparando cc_splitar_lancamento..."
+echo "Instalando dependências..."
 
-mkdir -p build/cc_splitar_tmp
+pip install -r requirements.txt -t $COMMON_DIR
 
-pip install -r requirements.txt -t build/cc_splitar_tmp/
+########################################
+# 2. Limpeza pesada (ESSENCIAL)
+########################################
 
-cp -r backend build/cc_splitar_tmp/
+echo "Limpando arquivos desnecessários..."
 
-cp backend/app/modules/conciliacao_contabil/lambdas/cc_splitar_lancamento/handler.py \
-build/cc_splitar_tmp/handler.py
+cd $COMMON_DIR
 
-cd build/cc_splitar_tmp
-zip -r ../cc_splitar_lancamento.zip .
+# Remove caches e testes
+find . -type d -name "__pycache__" -exec rm -rf {} +
+find . -type d -name "tests" -exec rm -rf {} +
+
+# Remove metadados pesados
+find . -type d -name "*.dist-info" -exec rm -rf {} +
+find . -type d -name "*.egg-info" -exec rm -rf {} +
+
+# Remove arquivos compilados
+find . -name "*.pyc" -delete
+find . -name "*.pyo" -delete
+
 cd ../..
 
-rm -rf build/cc_splitar_tmp
-
 ########################################
-# Lambda cc_processar_lancamento
+# Função genérica para build de lambda
 ########################################
 
-echo "Preparando cc_processar_lancamento..."
+build_lambda () {
+    FUNCTION_NAME=$1
+    HANDLER_PATH=$2
 
-mkdir -p build/cc_processar_tmp
+    echo "Preparando $FUNCTION_NAME..."
 
-pip install -r requirements.txt -t build/cc_processar_tmp/
+    TMP_DIR="$BUILD_DIR/${FUNCTION_NAME}_tmp"
+    ZIP_PATH="$BUILD_DIR/${FUNCTION_NAME}.zip"
 
-cp -r backend build/cc_processar_tmp/
+    mkdir -p $TMP_DIR
 
-cp backend/app/modules/conciliacao_contabil/lambdas/cc_processar_lancamento/handler.py \
-build/cc_processar_tmp/handler.py
+    # Copia libs já limpas
+    cp -r $COMMON_DIR/* $TMP_DIR/
 
-cd build/cc_processar_tmp
-zip -r ../cc_processar_lancamento.zip .
-cd ../..
+    # ⚠️ Copiar somente o necessário do backend
+    mkdir -p $TMP_DIR/backend/app/modules/conciliacao_contabil
 
-rm -rf build/cc_processar_tmp
+    cp -r backend/app/modules/conciliacao_contabil $TMP_DIR/backend/app/modules/
 
-echo "Build finalizado."
+    # Copia handler
+    cp $HANDLER_PATH $TMP_DIR/handler.py
+
+    ########################################
+    # Limpeza final (extra segurança)
+    ########################################
+    cd $TMP_DIR
+
+    find . -type d -name "__pycache__" -exec rm -rf {} +
+    find . -name "*.pyc" -delete
+
+    ########################################
+    # Zip
+    ########################################
+    zip -rq ../$(basename $ZIP_PATH) .
+
+    cd ../../
+    rm -rf $TMP_DIR
+}
+
+########################################
+# 3. Build das lambdas
+########################################
+
+build_lambda \
+  "cc_splitar_lancamento" \
+  "backend/app/modules/conciliacao_contabil/lambdas/cc_splitar_lancamento/handler.py"
+
+build_lambda \
+  "cc_processar_lancamento" \
+  "backend/app/modules/conciliacao_contabil/lambdas/cc_processar_lancamento/handler.py"
+
+echo "Build finalizado com sucesso."
