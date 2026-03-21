@@ -6,11 +6,47 @@ echo "======================================"
 echo "🚀 Deploy das Lambdas no LocalStack"
 echo "======================================"
 
+#############################################
+# 🌍 CONFIG GLOBAL
+#############################################
+
+export AWS_DEFAULT_REGION=us-east-1
+
 LAMBDA_ROLE="arn:aws:iam::000000000000:role/lambda-role"
 BUCKET_NAME="concog"
 QUEUE_NAME="cc-processar-lancamento"
-REGION="us-east-1"
 
+BUILD_DIR="build"
+
+#############################################
+# 🛠️ Função para build da lambda
+#############################################
+build_lambda () {
+
+    FUNCTION_NAME=$1
+
+    echo ""
+    echo "🔨 Build da lambda: $FUNCTION_NAME"
+
+    rm -rf $BUILD_DIR/$FUNCTION_NAME
+    mkdir -p $BUILD_DIR/$FUNCTION_NAME
+
+    cp -r backend $BUILD_DIR/$FUNCTION_NAME/
+
+    if [ -f requirements.txt ]; then
+        pip install -r requirements.txt -t $BUILD_DIR/$FUNCTION_NAME > /dev/null
+    fi
+
+    cd $BUILD_DIR/$FUNCTION_NAME
+    zip -r ../$FUNCTION_NAME.zip . > /dev/null
+    cd - > /dev/null
+
+    echo "✅ Build concluído: $BUILD_DIR/$FUNCTION_NAME.zip"
+}
+
+#############################################
+# 🚀 Deploy da lambda
+#############################################
 deploy_lambda () {
 
     FUNCTION_NAME=$1
@@ -36,36 +72,59 @@ deploy_lambda () {
         --handler $HANDLER \
         --role $LAMBDA_ROLE \
         --zip-file fileb://$ZIP_FILE
+
+    echo "⏳ Aguardando lambda ficar ativa..."
+    awslocal lambda wait function-active \
+        --function-name $FUNCTION_NAME
+
+    echo "✅ Lambda pronta"
 }
 
+#############################################
+# 🪣 S3
+#############################################
+
 echo ""
-echo "🪣 Garantindo que o bucket existe..."
+echo "🪣 Garantindo bucket..."
 
 if ! awslocal s3api head-bucket --bucket $BUCKET_NAME 2>/dev/null
 then
-    echo "📦 Criando bucket $BUCKET_NAME"
+    echo "📦 Criando bucket..."
     awslocal s3 mb s3://$BUCKET_NAME
 else
     echo "✅ Bucket já existe"
 fi
 
+#############################################
+# 🔨 BUILD
+#############################################
+
+build_lambda "cc_splitar_lancamento"
+build_lambda "cc_processar_lancamento"
+
+#############################################
+# 🚀 DEPLOY
+#############################################
+
 deploy_lambda "cc-splitar-lancamento" \
-"build/cc_splitar_lancamento.zip" \
-"handler.lambda_handler"
+"$BUILD_DIR/cc_splitar_lancamento.zip" \
+"backend.app.modules.conciliacao_contabil.lambdas.cc_splitar_lancamento.handler.lambda_handler"
 
 deploy_lambda "cc-processar-lancamento" \
-"build/cc_processar_lancamento.zip" \
-"handler.lambda_handler"
+"$BUILD_DIR/cc_processar_lancamento.zip" \
+"backend.app.modules.conciliacao_contabil.lambdas.cc_processar_lancamento.handler.lambda_handler"
+
+#############################################
+# 📨 SQS
+#############################################
 
 echo ""
-echo "📨 Garantindo que a fila SQS existe..."
+echo "📨 Garantindo fila SQS..."
 
 QUEUE_URL=$(awslocal sqs create-queue \
     --queue-name $QUEUE_NAME \
     --query 'QueueUrl' \
     --output text)
-
-echo "Queue URL: $QUEUE_URL"
 
 QUEUE_ARN=$(awslocal sqs get-queue-attributes \
     --queue-url $QUEUE_URL \
@@ -75,26 +134,36 @@ QUEUE_ARN=$(awslocal sqs get-queue-attributes \
 
 echo "Queue ARN: $QUEUE_ARN"
 
+#############################################
+# 🔗 SQS → Lambda
+#############################################
+
 echo ""
-echo "🔗 Conectando SQS → Lambda cc-processar-lancamento..."
+echo "🔗 Conectando SQS → Lambda..."
 
 awslocal lambda create-event-source-mapping \
     --function-name cc-processar-lancamento \
     --batch-size 1 \
     --event-source-arn $QUEUE_ARN \
-    2>/dev/null || true
+    2>/dev/null || echo "ℹ️ Mapping já existe"
+
+#############################################
+# 🔐 Permissão S3 → Lambda (CORRIGIDO)
+#############################################
 
 echo ""
-echo "🔐 Adicionando permissão para S3 invocar a lambda splitar..."
+echo "🔐 Configurando permissão S3 → Lambda..."
 
 awslocal lambda add-permission \
     --function-name cc-splitar-lancamento \
     --statement-id s3invoke \
     --action lambda:InvokeFunction \
     --principal s3.amazonaws.com \
-    --source-arn arn:aws:s3:::$BUCKET_NAME \
-    --region $REGION \
-    2>/dev/null || true
+    2>/dev/null || echo "ℹ️ Permissão já existe"
+
+#############################################
+# 🔎 ARN
+#############################################
 
 echo ""
 echo "🔎 Obtendo ARN da lambda..."
@@ -106,10 +175,9 @@ LAMBDA_ARN=$(awslocal lambda get-function \
 
 echo "Lambda ARN: $LAMBDA_ARN"
 
-
-echo ""
-echo "⏳ Aguardando serviços estabilizarem..."
-sleep 10
+#############################################
+# ⚡ Trigger S3 → Lambda (CORRIGIDO)
+#############################################
 
 echo ""
 echo "⚡ Criando trigger S3 → Lambda..."
@@ -121,7 +189,7 @@ awslocal s3api put-bucket-notification-configuration \
       {
         \"Id\": \"trigger-xlsx-arquivo-original\",
         \"LambdaFunctionArn\": \"$LAMBDA_ARN\",
-        \"Events\": [\"s3:ObjectCreated:*\"] ,
+        \"Events\": [\"s3:ObjectCreated:*\"],
         \"Filter\": {
           \"Key\": {
             \"FilterRules\": [
@@ -140,5 +208,15 @@ awslocal s3api put-bucket-notification-configuration \
     ]
   }"
 
+#############################################
+# 🔍 DEBUG FINAL
+#############################################
+
 echo ""
-echo "✅ Deploy finalizado!"
+echo "🔍 Validando configuração..."
+
+awslocal s3api get-bucket-notification-configuration \
+  --bucket $BUCKET_NAME
+
+echo ""
+echo "✅ Deploy finalizado com sucesso!"
