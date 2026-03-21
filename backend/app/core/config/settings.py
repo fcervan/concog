@@ -3,13 +3,18 @@ import os
 try:
     from dotenv import load_dotenv
 
-    # só carrega .env se não estiver rodando na AWS
-    if os.getenv("AWS_EXECUTION_ENV") is None:
+    load_dotenv(override=True)
+    if os.getenv("ENV", "dev") != "prod":
         load_dotenv()
 
 except ImportError:
     pass
-
+# from dotenv import load_dotenv
+# from pathlib import Path
+#
+# # sobe até a raiz do projeto
+# BASE_DIR = Path(__file__).resolve().parents[4]
+# load_dotenv(BASE_DIR / ".env", override=True)
 
 # ==============================
 # LLM CONFIG
@@ -43,10 +48,10 @@ HYPERBOLIC_MODEL = os.getenv(
 # DATABASE CONFIG
 # ==============================
 
-DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_HOST = os.getenv("DB_HOST", "mysql-concog")
 DB_PORT = int(os.getenv("DB_PORT", 3306))
 DB_USER = os.getenv("DB_USER", "root")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "123456")
 DB_NAME = os.getenv("DB_NAME", "concog")
 
 # pool de conexões

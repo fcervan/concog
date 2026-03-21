@@ -3,10 +3,10 @@ from backend.app.core.database.pool import get_connection
 
 
 @contextmanager
-def get_cursor(dictionary=True):
+def get_cursor():
 
     connection = get_connection()
-    cursor = connection.cursor(dictionary=dictionary)
+    cursor = connection.cursor()
 
     try:
         yield cursor
