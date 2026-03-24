@@ -10,14 +10,14 @@ class ClienteRepository(BaseRepository):
         :param arquivo_parser_id:
         :return:
         """
-        query = """
+        query = f"""
             select
                 ap.nome_parser
                 from cliente c
                     inner join arquivo_parser_cliente apc on c.cliente_id = apc.cliente_id
                     inner join arquivo_parser ap on apc.arquivo_parser_id = ap.arquivo_parser_id
                 where
-                    apc.cliente_id = 1 and apc.arquivo_parser_id = 1
+                    apc.cliente_id = {cliente_id} and apc.arquivo_parser_id = {arquivo_parser_id}
         """
 
         return self.fetch_one(query)

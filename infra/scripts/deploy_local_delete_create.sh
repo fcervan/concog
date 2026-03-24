@@ -11,6 +11,9 @@ echo "======================================"
 #############################################
 
 export AWS_DEFAULT_REGION=us-east-1
+export AWS_ACCESS_KEY_ID=test
+export AWS_SECRET_ACCESS_KEY=test
+export AWS_ENDPOINT_URL=http://localhost.localstack.cloud:4566
 
 LAMBDA_ROLE="arn:aws:iam::000000000000:role/lambda-role"
 BUCKET_NAME="concog"
@@ -69,6 +72,7 @@ deploy_lambda () {
         --function-name $FUNCTION_NAME \
         --runtime python3.11 \
         --timeout 600 \
+        --memory-size 1024 \
         --handler $HANDLER \
         --role $LAMBDA_ROLE \
         --zip-file fileb://$ZIP_FILE
@@ -121,12 +125,12 @@ deploy_lambda "cc-processar-lancamento" \
 echo ""
 echo "📨 Garantindo fila SQS..."
 
-QUEUE_URL=$(awslocal sqs create-queue \
+QUEUE_URL=$(awslocal --endpoint-url=$AWS_ENDPOINT_URL sqs create-queue \
     --queue-name $QUEUE_NAME \
     --query 'QueueUrl' \
     --output text)
 
-QUEUE_ARN=$(awslocal sqs get-queue-attributes \
+QUEUE_ARN=$(awslocal --endpoint-url=$AWS_ENDPOINT_URL sqs get-queue-attributes \
     --queue-url $QUEUE_URL \
     --attribute-names QueueArn \
     --query 'Attributes.QueueArn' \

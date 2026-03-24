@@ -1,3 +1,4 @@
+# pool.py
 import pymysql
 from backend.app.core.config import settings
 
@@ -9,5 +10,6 @@ def get_connection():
         user=settings.DB_USER,
         password=settings.DB_PASSWORD,
         database=settings.DB_NAME,
-        cursorclass=pymysql.cursors.DictCursor  # substitui dictionary=True
+        cursorclass=pymysql.cursors.DictCursor,
+        autocommit=False  # 🔥 importante
     )
