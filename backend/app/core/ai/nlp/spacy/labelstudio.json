@@ -599,5 +599,1079 @@
   "created_at": "2026-04-24T20:43:39.872641Z",
   "updated_at": "2026-04-24T20:43:39.872674Z",
   "lead_time": 6.747
+},
+{
+  "text": "COMPRA DE MERCADORIAS 12140  1 06\/09\/2024 ANCHIETA PECAS DIST. DE PECAS",
+  "id": 35,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "12140",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 36,
+  "created_at": "2026-04-24T21:03:09.705002Z",
+  "updated_at": "2026-04-24T21:03:09.705024Z",
+  "lead_time": 6.094
+},
+{
+  "text": "NF 12140 ANCHIETA PEÇAS - PAGAMENTO FORNECEDOR - NF 12140 PEÇAS AUTOMOTIVAS FUU1089",
+  "id": 36,
+  "label": [
+    {
+      "start": 3,
+      "end": 8,
+      "text": "12140",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 37,
+  "created_at": "2026-04-24T21:04:10.414333Z",
+  "updated_at": "2026-04-24T21:04:10.414359Z",
+  "lead_time": 3.261
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO CREDITO 05\/07\/2024 1207298 ANHANGUERA",
+  "id": 37,
+  "label": [
+    {
+      "start": 50,
+      "end": 57,
+      "text": "1207298",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 38,
+  "created_at": "2026-04-24T21:04:15.779859Z",
+  "updated_at": "2026-04-24T21:04:15.779886Z",
+  "lead_time": 3.727
+},
+{
+  "text": " PAGAMENTO CARTAO DE CREDITO NF 246265 ANHANGUERA",
+  "id": 38,
+  "label": [
+    {
+      "start": 32,
+      "end": 38,
+      "text": "246265",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 39,
+  "created_at": "2026-04-24T21:19:05.968694Z",
+  "updated_at": "2026-04-24T21:19:05.968717Z",
+  "lead_time": 3.749
+},
+{
+  "text": "COMPRA DE MERCADORIAS 365  1 17\/09\/2024 Anjos Ferramentas e Pecas Ltda",
+  "id": 39,
+  "label": [
+    {
+      "start": 22,
+      "end": 25,
+      "text": "365",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 40,
+  "created_at": "2026-04-24T21:19:10.914538Z",
+  "updated_at": "2026-04-24T21:19:10.914570Z",
+  "lead_time": 3.846
+},
+{
+  "text": "COMPRA DE MERCADORIAS 56535  002 02\/09\/2024 APS COMERCIO DE EMBALAGEM LTDA",
+  "id": 40,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "56535",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 41,
+  "created_at": "2026-04-24T21:19:18.201928Z",
+  "updated_at": "2026-04-24T21:19:18.201966Z",
+  "lead_time": 6.041
+},
+{
+  "text": "PAGAMENTO CARTAO DE CREDITO 59374 APS EMBALAGEM",
+  "id": 41,
+  "label": [
+    {
+      "start": 28,
+      "end": 33,
+      "text": "59374",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 42,
+  "created_at": "2026-04-24T21:19:23.733740Z",
+  "updated_at": "2026-04-24T21:19:23.733764Z",
+  "lead_time": 4.307
+},
+{
+  "text": "COMPRA DE MERCADORIAS 5953  1 23\/09\/2024 Artur Zig Rosenblatt Ferramentas ME",
+  "id": 42,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "5953",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 43,
+  "created_at": "2026-04-24T21:19:28.371740Z",
+  "updated_at": "2026-04-24T21:19:28.371761Z",
+  "lead_time": 3.326
+},
+{
+  "text": "COMPRA DE MERCADORIAS 60595  1 10\/09\/2024 ASPERBRAS TUBOS E CONEXOES LTDA",
+  "id": 43,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "60595",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 44,
+  "created_at": "2026-04-24T21:19:36.324581Z",
+  "updated_at": "2026-04-24T21:19:36.324615Z",
+  "lead_time": 3.813
+},
+{
+  "text": "SERV. CONTRATADOS 881045  - 03\/09\/2024 AURUM SOFTMATIC LTDA",
+  "id": 44,
+  "label": [
+    {
+      "start": 18,
+      "end": 24,
+      "text": "881045",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 45,
+  "created_at": "2026-04-24T21:19:40.535656Z",
+  "updated_at": "2026-04-24T21:19:40.535679Z",
+  "lead_time": 3.052
+},
+{
+  "text": "SERV. CONTRATADOS 885223  - 03\/09\/2024 AURUM SOFTMATIC LTDA",
+  "id": 45,
+  "label": [
+    {
+      "start": 18,
+      "end": 24,
+      "text": "885223",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 46,
+  "created_at": "2026-04-24T21:19:44.951368Z",
+  "updated_at": "2026-04-24T21:19:44.951391Z",
+  "lead_time": 3.165
+},
+{
+  "text": "NFS 885223\/881045 AURUM SOFTMATIC - PAGAMENTO FORNECEDOR - NFS 885223\/881045 SISTEMA PARA EMISSÃO DE NOTAS FISCAIS",
+  "id": 46,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "885223",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 11,
+      "end": 17,
+      "text": "881045",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 63,
+      "end": 69,
+      "text": "885223",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 70,
+      "end": 76,
+      "text": "881045",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 47,
+  "created_at": "2026-04-24T21:20:04.814865Z",
+  "updated_at": "2026-04-24T21:20:04.814892Z",
+  "lead_time": 17.979
+},
+{
+  "text": "COMPRA DE MERCADORIAS 21360  1 10\/09\/2024 AUTO POSTO CINQUENTAO UBERABA LTDA",
+  "id": 47,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "21360",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 48,
+  "created_at": "2026-04-24T21:20:12.714662Z",
+  "updated_at": "2026-04-24T21:20:12.714688Z",
+  "lead_time": 5.909
+},
+{
+  "text": "COMPRA DE MERCADORIAS 54290  0 27\/09\/2024 AUTO POSTO ESCALA 121 LTDA",
+  "id": 48,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "54290",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 49,
+  "created_at": "2026-04-24T21:20:17.091969Z",
+  "updated_at": "2026-04-24T21:20:17.091994Z",
+  "lead_time": 3.062
+},
+{
+  "text": "COMPRA DE MERCADORIAS 54291  0 27\/09\/2024 AUTO POSTO ESCALA 121 LTDA",
+  "id": 49,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "54291",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 50,
+  "created_at": "2026-04-24T21:20:21.789546Z",
+  "updated_at": "2026-04-24T21:20:21.789582Z",
+  "lead_time": 2.71
+},
+{
+  "text": "COMPRA DE MERCADORIAS 9106  1 25\/09\/2024 AUTO POSTO ESPIGAO LTDA",
+  "id": 50,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "9106",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 51,
+  "created_at": "2026-04-24T21:20:27.101776Z",
+  "updated_at": "2026-04-24T21:20:27.101800Z",
+  "lead_time": 4.185
+},
+{
+  "text": "COMPRA DE MERCADORIAS 27282  1 02\/09\/2024 AUTO POSTO PAPA JOAO XXIII LTDA",
+  "id": 51,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "27282",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 52,
+  "created_at": "2026-04-24T21:20:33.310789Z",
+  "updated_at": "2026-04-24T21:20:33.310832Z",
+  "lead_time": 4.144
+},
+{
+  "text": "COMPRA DE MERCADORIAS 27335  1 03\/09\/2024 AUTO POSTO PAPA JOAO XXIII LTDA",
+  "id": 52,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "27335",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 53,
+  "created_at": "2026-04-24T21:20:42.976171Z",
+  "updated_at": "2026-04-24T21:20:42.976196Z",
+  "lead_time": 5.775
+},
+{
+  "text": "NF 27335 NF 27335 -  -  TRANSFERÊNCIA ENTRE CONTAS MAXILIGAS BRADESCO 0645510-8",
+  "id": 53,
+  "label": [
+    {
+      "start": 3,
+      "end": 8,
+      "text": "27335",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 12,
+      "end": 17,
+      "text": "27335",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 54,
+  "created_at": "2026-04-24T21:20:50.377134Z",
+  "updated_at": "2026-04-24T21:20:50.377158Z",
+  "lead_time": 5.969
+},
+{
+  "text": "NF 27282 AUTO POSTO PAPA JOAO XXIII LTDA - PAGAMENTO FORNECEDOR - NF 27282 ABASTECIMENTOS 17\/08\/2024 À 02\/09\/2024",
+  "id": 54,
+  "label": [
+    {
+      "start": 3,
+      "end": 8,
+      "text": "27282",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 69,
+      "end": 74,
+      "text": "27282",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 55,
+  "created_at": "2026-04-24T21:21:09.659786Z",
+  "updated_at": "2026-04-24T21:21:09.659824Z",
+  "lead_time": 17.981
+},
+{
+  "text": "COMPRA DE MERCADORIAS 74  10 17\/09\/2024 AUTO POSTO PAPA JOAO XXIII LTDA",
+  "id": 55,
+  "label": [
+    {
+      "start": 22,
+      "end": 24,
+      "text": "74",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 56,
+  "created_at": "2026-04-24T21:21:15.382490Z",
+  "updated_at": "2026-04-24T21:21:15.382514Z",
+  "lead_time": 4.38
+},
+{
+  "text": "COMPRA DE MERCADORIAS 90  10 18\/09\/2024 AUTO POSTO PAPA JOAO XXIII LTDA",
+  "id": 56,
+  "label": [
+    {
+      "start": 22,
+      "end": 24,
+      "text": "90",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 57,
+  "created_at": "2026-04-24T21:21:21.869605Z",
+  "updated_at": "2026-04-24T21:21:21.869630Z",
+  "lead_time": 5.287
+},
+{
+  "text": "NF 90 AUTO POSTO PAPA JOAO XXIII LTDA - PAGAMENTO FORNECEDOR - NF 90 ABASTECIMENTOS 01\/09\/2024 À 16\/09\/2024",
+  "id": 57,
+  "label": [
+    {
+      "start": 3,
+      "end": 5,
+      "text": "90",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 58,
+  "created_at": "2026-04-24T21:21:26.552851Z",
+  "updated_at": "2026-04-24T21:21:26.552877Z",
+  "lead_time": 3.016
+},
+{
+  "text": "NF 74 NF 74 -  -  CTF-ABASTECIM.VEICULOS",
+  "id": 58,
+  "label": [
+    {
+      "start": 3,
+      "end": 5,
+      "text": "74",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 9,
+      "end": 11,
+      "text": "74",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 59,
+  "created_at": "2026-04-24T21:21:34.946198Z",
+  "updated_at": "2026-04-24T21:21:34.946219Z",
+  "lead_time": 7.181
+},
+{
+  "text": "COMPRA DE MERCADORIAS 253821  0 15\/09\/2024 AUTO POSTO REI DA CASTELO LTDA",
+  "id": 59,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "253821",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 60,
+  "created_at": "2026-04-24T21:21:39.212132Z",
+  "updated_at": "2026-04-24T21:21:39.212155Z",
+  "lead_time": 3.005
+},
+{
+  "text": "NF 253821 NF 253821 -  -  CTF-ABASTECIM.VEICULOS",
+  "id": 60,
+  "label": [
+    {
+      "start": 3,
+      "end": 9,
+      "text": "253821",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 13,
+      "end": 19,
+      "text": "253821",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 61,
+  "created_at": "2026-04-24T21:21:45.095702Z",
+  "updated_at": "2026-04-24T21:21:45.095734Z",
+  "lead_time": 4.522
+},
+{
+  "text": "COMPRA DE MERCADORIAS 8667  6 30\/09\/2024 AUTO POSTO REI DA CASTELO RONDON",
+  "id": 61,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "8667",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 62,
+  "created_at": "2026-04-24T21:21:49.808412Z",
+  "updated_at": "2026-04-24T21:21:49.808445Z",
+  "lead_time": 3.429
+},
+{
+  "text": "COMPRA DE MERCADORIAS 8668  6 30\/09\/2024 AUTO POSTO REI DA CASTELO RONDON",
+  "id": 62,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "8668",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 63,
+  "created_at": "2026-04-24T21:21:59.391424Z",
+  "updated_at": "2026-04-24T21:21:59.391454Z",
+  "lead_time": 8.335
+},
+{
+  "text": "COMPRA DE MERCADORIAS 218849  1 14\/09\/2024 AUTO POSTO RODOTRUCK DE PRESIDENTE PRUDENTE LTDA",
+  "id": 63,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "218849",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 64,
+  "created_at": "2026-04-24T21:22:21.436118Z",
+  "updated_at": "2026-04-24T21:22:21.436160Z",
+  "lead_time": 20.696
+},
+{
+  "text": "COMPRA DE MERCADORIAS 218918  1 15\/09\/2024 AUTO POSTO RODOTRUCK DE PRESIDENTE PRUDENTE LTDA",
+  "id": 64,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "218918",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 65,
+  "created_at": "2026-04-24T21:22:26.497180Z",
+  "updated_at": "2026-04-24T21:22:26.497203Z",
+  "lead_time": 2.523
+},
+{
+  "text": "COMPRA DE MERCADORIAS 219340  1 19\/09\/2024 AUTO POSTO RODOTRUCK DE PRESIDENTE PRUDENTE LTDA",
+  "id": 65,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "219340",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 66,
+  "created_at": "2026-04-24T21:22:30.282660Z",
+  "updated_at": "2026-04-24T21:22:30.282684Z",
+  "lead_time": 2.591
+},
+{
+  "text": "COMPRA DE MERCADORIAS 219341  1 19\/09\/2024 AUTO POSTO RODOTRUCK DE PRESIDENTE PRUDENTE LTDA",
+  "id": 66,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "219341",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 67,
+  "created_at": "2026-04-24T21:22:34.034327Z",
+  "updated_at": "2026-04-24T21:22:34.034352Z",
+  "lead_time": 2.585
+},
+{
+  "text": "SERV. CONTRATADOS 46838  - 15\/09\/2024 AVALMED MEDICINA E SEGURANÇA DO TRABALHO EPP",
+  "id": 67,
+  "label": [
+    {
+      "start": 18,
+      "end": 23,
+      "text": "46838",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 68,
+  "created_at": "2026-04-24T21:22:39.972249Z",
+  "updated_at": "2026-04-24T21:22:39.972270Z",
+  "lead_time": 2.827
+},
+{
+  "text": "IRRF RETIDO 46838  - 15\/09\/2024 AVALMED MEDICINA E SEGURANÇA DO TRABALHO EPP",
+  "id": 68,
+  "label": [
+    {
+      "start": 12,
+      "end": 17,
+      "text": "46838",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 69,
+  "created_at": "2026-04-24T21:22:44.596194Z",
+  "updated_at": "2026-04-24T21:22:44.596228Z",
+  "lead_time": 3.416
+},
+{
+  "text": "PIS\/COFINS\/CSLL RETIDOS 46838  - 15\/09\/2024 AVALMED MEDICINA E SEGURANÇA DO TRABALHO EPP",
+  "id": 69,
+  "label": [
+    {
+      "start": 24,
+      "end": 29,
+      "text": "46838",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 70,
+  "created_at": "2026-04-24T21:22:48.502556Z",
+  "updated_at": "2026-04-24T21:22:48.502586Z",
+  "lead_time": 2.793
+},
+{
+  "text": "PIS\/COFINS\/CSLL RETIDOS 46838  - 15\/09\/2024 AVALMED MEDICINA E SEGURANÇA DO TRABALHO EPP",
+  "id": 70,
+  "label": [
+    {
+      "start": 24,
+      "end": 29,
+      "text": "46838",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 71,
+  "created_at": "2026-04-24T21:22:52.391335Z",
+  "updated_at": "2026-04-24T21:22:52.391361Z",
+  "lead_time": 2.71
+},
+{
+  "text": "PIS\/COFINS\/CSLL RETIDOS 46838  - 15\/09\/2024 AVALMED MEDICINA E SEGURANÇA DO TRABALHO EPP",
+  "id": 71,
+  "label": [
+    {
+      "start": 24,
+      "end": 29,
+      "text": "46838",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 72,
+  "created_at": "2026-04-26T13:33:07.759483Z",
+  "updated_at": "2026-04-26T13:33:07.759507Z",
+  "lead_time": 4.799
+},
+{
+  "text": "NFS 46838 AVALMED MEDICINA E SEGURANÇA DO TRABALHO LTDA  - PAGAMENTO FORNECEDOR - NFS 46838 SERVIÇOS DE MEDICINA OCUPACIONAL E SEGURANÇA DO TRABALHO",
+  "id": 72,
+  "label": [
+    {
+      "start": 4,
+      "end": 9,
+      "text": "46838",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 86,
+      "end": 91,
+      "text": "46838",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 73,
+  "created_at": "2026-04-26T13:33:21.048876Z",
+  "updated_at": "2026-04-26T13:33:21.048897Z",
+  "lead_time": 11.849
+},
+{
+  "text": "NFS 87580 AVAPRO - AMBIENTE VIRTUAL DE APRENDIZAGEM PROFISSIONAL LTDA PAGAMENTO FORNECEDOR",
+  "id": 73,
+  "label": [
+    {
+      "start": 4,
+      "end": 9,
+      "text": "87580",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 74,
+  "created_at": "2026-04-26T13:33:29.659648Z",
+  "updated_at": "2026-04-26T13:33:29.659673Z",
+  "lead_time": 6.187
+},
+{
+  "text": "SERV. CONTRATADOS 87580  - 14\/09\/2024 AVAPRO AMBIENTE VIRTUAL DE APRENDIZAGEM PROFISSI",
+  "id": 74,
+  "label": [
+    {
+      "start": 18,
+      "end": 23,
+      "text": "87580",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 75,
+  "created_at": "2026-04-26T13:33:36.793996Z",
+  "updated_at": "2026-04-26T13:33:36.794027Z",
+  "lead_time": 5.511
+},
+{
+  "text": "COMPRA DE MERCADORIAS 101523  1 16\/09\/2024 BALAQUI DECOR LTDA",
+  "id": 75,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "101523",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 76,
+  "created_at": "2026-04-26T13:33:46.144999Z",
+  "updated_at": "2026-04-26T13:33:46.145034Z",
+  "lead_time": 5.976
+},
+{
+  "text": "NF 29854 BARAO COMERCIO DE FERRO - PAGAMENTO FORNECEDOR - NF 29854 ALMOX\/SERRALHERIA",
+  "id": 76,
+  "label": [
+    {
+      "start": 3,
+      "end": 8,
+      "text": "29854",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 61,
+      "end": 66,
+      "text": "29854",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 77,
+  "created_at": "2026-04-26T13:33:59.789540Z",
+  "updated_at": "2026-04-26T13:33:59.789565Z",
+  "lead_time": 11.184
+},
+{
+  "text": "NF 29887 BARAO COMERCIO DE FERRO - PAGAMENTO FORNECEDOR - NF 29887 ALMOX\/SERRALHERIA",
+  "id": 77,
+  "label": [
+    {
+      "start": 3,
+      "end": 8,
+      "text": "29887",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 61,
+      "end": 66,
+      "text": "29887",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 78,
+  "created_at": "2026-04-26T13:34:12.495324Z",
+  "updated_at": "2026-04-26T13:34:12.495349Z",
+  "lead_time": 6.645
+},
+{
+  "text": "COMPRA DE MERCADORIAS 30096  1 19\/09\/2024 BARAO COMERCIO DE FERRO E ACO LTDA.",
+  "id": 78,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "30096",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 79,
+  "created_at": "2026-04-26T13:34:18.602845Z",
+  "updated_at": "2026-04-26T13:34:18.602868Z",
+  "lead_time": 4.946
+},
+{
+  "text": "COMPRA DE MERCADORIAS 30097  1 19\/09\/2024 BARAO COMERCIO DE FERRO E ACO LTDA.",
+  "id": 79,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "30097",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 80,
+  "created_at": "2026-04-26T13:34:24.358404Z",
+  "updated_at": "2026-04-26T13:34:24.358428Z",
+  "lead_time": 4.624
+},
+{
+  "text": "NF 78225 BELA TINTAS LTDA - PAGAMENTO FORNECEDOR - NF 78225 THINNER\/WD\/TINTA - MAXILIGAS",
+  "id": 80,
+  "label": [
+    {
+      "start": 3,
+      "end": 8,
+      "text": "78225",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 54,
+      "end": 59,
+      "text": "78225",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 81,
+  "created_at": "2026-04-26T13:34:33.580192Z",
+  "updated_at": "2026-04-26T13:34:33.580236Z",
+  "lead_time": 5.755
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO DE 05\/05\/2024 68443 BIANCA BARBOSA",
+  "id": 81,
+  "label": [
+    {
+      "start": 56,
+      "end": 61,
+      "text": "68443",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 82,
+  "created_at": "2026-04-26T13:34:41.702198Z",
+  "updated_at": "2026-04-26T13:34:41.702224Z",
+  "lead_time": 6.808
+},
+{
+  "text": "SERV. CONTRATADOS 629  - 01\/09\/2024 BIOSP - CONTROLE ECOLOGICO DE PRAGAS LTDA",
+  "id": 82,
+  "label": [
+    {
+      "start": 18,
+      "end": 21,
+      "text": "629",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 83,
+  "created_at": "2026-04-26T13:34:48.338372Z",
+  "updated_at": "2026-04-26T13:34:48.338395Z",
+  "lead_time": 4.791
+},
+{
+  "text": "NFS 629 BIOSP - CONTROLE ECOLOGIICO DE PRAGAS LTDA - EPP - PAGAMENTO FORNECEDOR - NFS 629 DESINSETIZAÇÃO, DESRATIZAÇÃO, ARMADILHA LUMINOSA, COMODATO",
+  "id": 83,
+  "label": [
+    {
+      "start": 4,
+      "end": 7,
+      "text": "629",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 86,
+      "end": 89,
+      "text": "629",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 84,
+  "created_at": "2026-04-26T14:30:31.627250Z",
+  "updated_at": "2026-04-26T14:30:31.627275Z",
+  "lead_time": 14.052
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/07\/2024 BLUEWALECOM",
+  "id": 84,
+  "annotator": 2,
+  "annotation_id": 85,
+  "created_at": "2026-04-26T14:30:42.185223Z",
+  "updated_at": "2026-04-26T14:30:42.185245Z",
+  "lead_time": 7.36
+},
+{
+  "text": "SERV. CONTRATADOS 97  - 05\/09\/2024 BORRACHARIA BRAGA E SILVA LTDA",
+  "id": 85,
+  "label": [
+    {
+      "start": 18,
+      "end": 20,
+      "text": "97",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 86,
+  "created_at": "2026-04-26T14:31:05.246401Z",
+  "updated_at": "2026-04-26T14:31:05.246431Z",
+  "lead_time": 16.502
+},
+{
+  "text": "SERV. CONTRATADOS 111  - 18\/09\/2024 BORRACHARIA BRAGA E SILVA LTDA",
+  "id": 86,
+  "label": [
+    {
+      "start": 18,
+      "end": 21,
+      "text": "111",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 87,
+  "created_at": "2026-04-26T14:31:10.591823Z",
+  "updated_at": "2026-04-26T14:31:10.591847Z",
+  "lead_time": 3.857
 }
 ]
