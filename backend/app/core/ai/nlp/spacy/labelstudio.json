@@ -1,0 +1,603 @@
+[
+{
+  "text": "DEVOLUCAO MERCADORIA 6600  1 09\/09\/2024 DENSITEL TRANSFORMADORES LTDA",
+  "id": 2,
+  "label": [
+    {
+      "start": 21,
+      "end": 25,
+      "text": "6600",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 2,
+  "created_at": "2026-04-24T18:50:53.386099Z",
+  "updated_at": "2026-04-24T18:50:53.386140Z",
+  "lead_time": 47.05
+},
+{
+  "text": "COMPRA DE MERCADORIAS 196198  2 06\/09\/2024 1 - THONY FERRAGEM LTDA",
+  "id": 3,
+  "annotator": 2,
+  "annotation_id": 3,
+  "created_at": "2026-04-24T18:51:04.301537Z",
+  "updated_at": "2026-04-24T18:51:04.301565Z",
+  "lead_time": 5.38
+},
+{
+  "text": "COMPRA DE MERCADORIAS 35  1 13\/09\/2024 27.529.753\/0001-45",
+  "id": 4,
+  "label": [
+    {
+      "start": 22,
+      "end": 24,
+      "text": "35",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 4,
+  "created_at": "2026-04-24T18:51:31.800624Z",
+  "updated_at": "2026-04-24T18:51:38.860744Z",
+  "lead_time": 25.278000000000002
+},
+{
+  "text": "COMPRA DE MERCADORIAS 5634  1 27\/09\/2024 3A ACABAMENTOS E CONSTRUCAO LTDA",
+  "id": 5,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "5634",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 5,
+  "created_at": "2026-04-24T18:53:20.006177Z",
+  "updated_at": "2026-04-24T18:53:20.006201Z",
+  "lead_time": 5.896
+},
+{
+  "text": "COMPRA DE MERCADORIAS 333  1 02\/09\/2024 41.252.524 LUIZ HENRIQUE OLIVEIRA SALATINI",
+  "id": 6,
+  "label": [
+    {
+      "start": 22,
+      "end": 25,
+      "text": "333",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 8,
+  "created_at": "2026-04-24T20:30:58.133173Z",
+  "updated_at": "2026-04-24T20:30:58.133199Z",
+  "lead_time": 4.582
+},
+{
+  "text": "COMPRA DE MERCADORIAS 4619  2 04\/09\/2024 48.742.675 GUILHERME GOMES MARINHO",
+  "id": 7,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "4619",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 7,
+  "created_at": "2026-04-24T18:54:30.081991Z",
+  "updated_at": "2026-04-24T18:54:30.082013Z",
+  "lead_time": 40.618
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/02\/2024 10305 VINICIUS ROBERTO",
+  "id": 8,
+  "label": [
+    {
+      "start": 53,
+      "end": 58,
+      "text": "10305",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 9,
+  "created_at": "2026-04-24T20:31:09.077724Z",
+  "updated_at": "2026-04-24T20:31:09.077748Z",
+  "lead_time": 7.256
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO CREDITO 05\/03\/2024 1945 VALDELICE DOS REIS",
+  "id": 9,
+  "label": [
+    {
+      "start": 50,
+      "end": 54,
+      "text": "1945",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 10,
+  "created_at": "2026-04-24T20:31:15.166069Z",
+  "updated_at": "2026-04-24T20:31:15.166092Z",
+  "lead_time": 3.887
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO CREDITO 05\/03\/2024 1230 FLAVIO MONTEZANO",
+  "id": 10,
+  "label": [
+    {
+      "start": 50,
+      "end": 54,
+      "text": "1230",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 11,
+  "created_at": "2026-04-24T20:31:33.310179Z",
+  "updated_at": "2026-04-24T20:31:33.310207Z",
+  "lead_time": 6.877
+},
+{
+  "text": "ESTORNO LANCAMENTO INDEVIDO QUE ORA REGULARIZAMOS",
+  "id": 11,
+  "annotator": 2,
+  "annotation_id": 12,
+  "created_at": "2026-04-24T20:31:44.459624Z",
+  "updated_at": "2026-04-24T20:31:44.459645Z",
+  "lead_time": 8.915
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/07\/2024 NF 20 NELLO CADEIRA",
+  "id": 12,
+  "label": [
+    {
+      "start": 56,
+      "end": 58,
+      "text": "20",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 13,
+  "created_at": "2026-04-24T20:39:36.727109Z",
+  "updated_at": "2026-04-24T20:39:36.727140Z",
+  "lead_time": 15.831
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/07\/2024 NF 21 NELLO CADEIRA",
+  "id": 13,
+  "label": [
+    {
+      "start": 56,
+      "end": 58,
+      "text": "21",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 14,
+  "created_at": "2026-04-24T20:39:42.827825Z",
+  "updated_at": "2026-04-24T20:39:42.827848Z",
+  "lead_time": 4.09
+},
+{
+  "text": "COMPRA DE MERCADORIAS 5219  2 25\/09\/2024 53.944.339 LEONARDO PEREIRA BANDEIRA",
+  "id": 14,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "5219",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 15,
+  "created_at": "2026-04-24T20:40:39.188330Z",
+  "updated_at": "2026-04-24T20:40:39.188358Z",
+  "lead_time": 15.233
+},
+{
+  "text": "COMPRA DE MERCADORIAS 5224  2 25\/09\/2024 53.944.339 LEONARDO PEREIRA BANDEIRA",
+  "id": 15,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "5224",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 16,
+  "created_at": "2026-04-24T20:40:45.604582Z",
+  "updated_at": "2026-04-24T20:40:45.604606Z",
+  "lead_time": 3.763
+},
+{
+  "text": "COMPRA DE MERCADORIAS 5225  2 25\/09\/2024 53.944.339 LEONARDO PEREIRA BANDEIRA",
+  "id": 16,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "5225",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 17,
+  "created_at": "2026-04-24T20:40:49.694543Z",
+  "updated_at": "2026-04-24T20:40:49.694566Z",
+  "lead_time": 2.886
+},
+{
+  "text": "COMPRA DE MERCADORIAS 5227  2 25\/09\/2024 53.944.339 LEONARDO PEREIRA BANDEIRA",
+  "id": 17,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "5227",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 18,
+  "created_at": "2026-04-24T20:40:57.185957Z",
+  "updated_at": "2026-04-24T20:40:57.185981Z",
+  "lead_time": 3.075
+},
+{
+  "text": "COMPRA DE MERCADORIAS 2  1 18\/09\/2024 53273376 LUIZ ANTONIO SALATINI",
+  "id": 18,
+  "label": [
+    {
+      "start": 22,
+      "end": 23,
+      "text": "2",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 19,
+  "created_at": "2026-04-24T20:41:05.203333Z",
+  "updated_at": "2026-04-24T20:41:05.203357Z",
+  "lead_time": 6.634
+},
+{
+  "text": "SERV. CONTRATADOS 2  - 06\/09\/2024 56.009.006 ANA PAULA OLIVEIRA MARQUES",
+  "id": 19,
+  "label": [
+    {
+      "start": 18,
+      "end": 19,
+      "text": "2",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 20,
+  "created_at": "2026-04-24T20:41:15.809608Z",
+  "updated_at": "2026-04-24T20:41:15.809643Z",
+  "lead_time": 8.551
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO DE 05\/07\/2024 NF 89863 AB PERES",
+  "id": 20,
+  "label": [
+    {
+      "start": 59,
+      "end": 64,
+      "text": "89863",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 21,
+  "created_at": "2026-04-24T20:41:22.102806Z",
+  "updated_at": "2026-04-24T20:41:22.102832Z",
+  "lead_time": 4.516
+},
+{
+  "text": "COMPRA DE MERCADORIAS 225245  1 13\/09\/2024 ACOFER INDUSTRIA E COMERCIO DE FERRO LTDA",
+  "id": 21,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "225245",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 22,
+  "created_at": "2026-04-24T20:41:28.698775Z",
+  "updated_at": "2026-04-24T20:41:28.698798Z",
+  "lead_time": 4.364
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO CREDITO 05\/03\/2024 16943",
+  "id": 22,
+  "label": [
+    {
+      "start": 50,
+      "end": 55,
+      "text": "16943",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 23,
+  "created_at": "2026-04-24T20:41:36.086444Z",
+  "updated_at": "2026-04-24T20:41:36.086467Z",
+  "lead_time": 5.809
+},
+{
+  "text": "COMPRA DE MERCADORIAS 41280  2 20\/09\/2024 AGROGARDEN COMERCIO E REPRESENTACOES LTDA",
+  "id": 23,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "41280",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 24,
+  "created_at": "2026-04-24T20:41:41.533983Z",
+  "updated_at": "2026-04-24T20:41:41.534008Z",
+  "lead_time": 4.153
+},
+{
+  "text": "TRANSFERENCIA PARA MELHOR APROPRIACAO",
+  "id": 24,
+  "annotator": 2,
+  "annotation_id": 25,
+  "created_at": "2026-04-24T20:42:05.057490Z",
+  "updated_at": "2026-04-24T20:42:05.057532Z",
+  "lead_time": 5.702
+},
+{
+  "text": "NF 26905 AIR CYCLO PRODUTOS INDUSTRIAIS LTDA ME - PAGAMENTO FORNECEDOR - NF 26905 PEÇAS AUTOMOTIVAS PARA EMPILHADEIRA",
+  "id": 25,
+  "label": [
+    {
+      "start": 3,
+      "end": 8,
+      "text": "26905",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 76,
+      "end": 81,
+      "text": "26905",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 26,
+  "created_at": "2026-04-24T20:42:10.027136Z",
+  "updated_at": "2026-04-24T20:42:19.321241Z",
+  "lead_time": 12.767
+},
+{
+  "text": "COMPRA DE MERCADORIAS 27261  1 24\/09\/2024 AIR CYCLO PRODUTOS INDUSTRIAIS LTDA - ME",
+  "id": 26,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "27261",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 27,
+  "created_at": "2026-04-24T20:42:24.774309Z",
+  "updated_at": "2026-04-24T20:42:24.774338Z",
+  "lead_time": 4.257
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/04\/2024 NF 269350 ALCATECIA COMERCIO VAREJISTA",
+  "id": 27,
+  "label": [
+    {
+      "start": 56,
+      "end": 62,
+      "text": "269350",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 28,
+  "created_at": "2026-04-24T20:42:42.789727Z",
+  "updated_at": "2026-04-24T20:42:42.789749Z",
+  "lead_time": 16.944
+},
+{
+  "text": "NFS 868158 ALELO S.A - PAGAMENTO FORNECEDOR - NFS 868158 TAXA ADMINISTRATIVA 1,5% SOBRE 15.000,00 DA RECARGA CONTA ALELO",
+  "id": 28,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "868158",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 50,
+      "end": 56,
+      "text": "868158",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 29,
+  "created_at": "2026-04-24T20:42:55.743858Z",
+  "updated_at": "2026-04-24T20:42:55.743906Z",
+  "lead_time": 7.19
+},
+{
+  "text": "SERV. CONTRATADOS 868158  - 12\/09\/2024 ALELO S.A",
+  "id": 29,
+  "label": [
+    {
+      "start": 18,
+      "end": 24,
+      "text": "868158",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 30,
+  "created_at": "2026-04-24T20:43:01.366528Z",
+  "updated_at": "2026-04-24T20:43:01.366552Z",
+  "lead_time": 3.773
+},
+{
+  "text": "VALOR SERVICOS ALELO",
+  "id": 30,
+  "annotator": 2,
+  "annotation_id": 31,
+  "created_at": "2026-04-24T20:43:05.275299Z",
+  "updated_at": "2026-04-24T20:43:05.275324Z",
+  "lead_time": 2.44
+},
+{
+  "text": "NFS 044065 ALELO S.A - PAGAMENTO FORNECEDOR - NFS 044065 TAXA ADMINISTRATIVA 1,5% SOBRE 15.000,00 DA RECARGA CONTA ALELO",
+  "id": 31,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "044065",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 50,
+      "end": 56,
+      "text": "044065",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 32,
+  "created_at": "2026-04-24T20:43:16.637010Z",
+  "updated_at": "2026-04-24T20:43:16.637034Z",
+  "lead_time": 8.749
+},
+{
+  "text": "SERV. CONTRATADOS 44065  - 20\/09\/2024 ALELO S.A",
+  "id": 32,
+  "label": [
+    {
+      "start": 18,
+      "end": 23,
+      "text": "44065",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 33,
+  "created_at": "2026-04-24T20:43:27.744648Z",
+  "updated_at": "2026-04-24T20:43:27.744680Z",
+  "lead_time": 6.308
+},
+{
+  "text": "VALOR SERVICO ALELO",
+  "id": 33,
+  "annotator": 2,
+  "annotation_id": 34,
+  "created_at": "2026-04-24T20:43:32.063939Z",
+  "updated_at": "2026-04-24T20:43:32.063962Z",
+  "lead_time": 2.735
+},
+{
+  "text": "SERV. CONTRATADOS 12  - 30\/09\/2024 ANA KELLY DA SILVA SANTOS",
+  "id": 34,
+  "label": [
+    {
+      "start": 18,
+      "end": 20,
+      "text": "12",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 35,
+  "created_at": "2026-04-24T20:43:39.872641Z",
+  "updated_at": "2026-04-24T20:43:39.872674Z",
+  "lead_time": 6.747
+}
+]
