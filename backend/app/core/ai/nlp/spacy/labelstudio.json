@@ -19,7 +19,7 @@
   "lead_time": 47.05
 },
 {
-  "text": "COMPRA DE MERCADORIAS 196198  2 06\/09\/2024 1 - THONY FERRAGEM LTDA",
+  "text": "COMPRA DE MERCADORIAS 196198  2 06\/09\/2024 1 THONY FERRAGEM LTDA",
   "id": 3,
   "annotator": 2,
   "annotation_id": 3,
@@ -1673,5 +1673,740 @@
   "created_at": "2026-04-26T14:31:10.591823Z",
   "updated_at": "2026-04-26T14:31:10.591847Z",
   "lead_time": 3.857
+},
+{
+  "text": "SERV. CONTRATADOS 3022  - 02\/09\/2024 BORRACHARIA DO NEI LTDA ME",
+  "id": 87,
+  "label": [
+    {
+      "start": 18,
+      "end": 22,
+      "text": "3022",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 88,
+  "created_at": "2026-04-26T14:38:47.875500Z",
+  "updated_at": "2026-04-26T14:38:47.875522Z",
+  "lead_time": 4.869
+},
+{
+  "text": "SERV. CONTRATADOS 3050  - 16\/09\/2024 BORRACHARIA DO NEI LTDA ME",
+  "id": 88,
+  "label": [
+    {
+      "start": 18,
+      "end": 22,
+      "text": "3050",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 89,
+  "created_at": "2026-04-26T14:38:54.282546Z",
+  "updated_at": "2026-04-26T14:38:54.282575Z",
+  "lead_time": 3.891
+},
+{
+  "text": "NFS 3022 BORRACHARIA DO NEI  - PAGAMENTO FORNECEDOR - NFS 3022 SERVIÇO DE BORRACHARIA REF AO MES DE AGOSTO",
+  "id": 89,
+  "label": [
+    {
+      "start": 4,
+      "end": 8,
+      "text": "3022",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 58,
+      "end": 62,
+      "text": "3022",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 90,
+  "created_at": "2026-04-26T14:39:06.443583Z",
+  "updated_at": "2026-04-26T14:39:06.443607Z",
+  "lead_time": 8.369
+},
+{
+  "text": "NFS 3050 BORRACHARIA DO NEI  - PAGAMENTO FORNECEDOR - NFS 3050 SERVIÇOS DE BORRACHARIA GHH\/FFI",
+  "id": 90,
+  "label": [
+    {
+      "start": 4,
+      "end": 8,
+      "text": "3050",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 58,
+      "end": 62,
+      "text": "3050",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 91,
+  "created_at": "2026-04-26T14:39:15.984057Z",
+  "updated_at": "2026-04-26T14:39:15.984079Z",
+  "lead_time": 7.44
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/07\/2024 NF 160970 BR LEAD",
+  "id": 91,
+  "label": [
+    {
+      "start": 56,
+      "end": 62,
+      "text": "160970",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 92,
+  "created_at": "2026-04-26T14:39:24.014907Z",
+  "updated_at": "2026-04-26T14:39:24.014959Z",
+  "lead_time": 5.668
+},
+{
+  "text": "NF 1080552 BRASLIMPO COMERICAL LTDA - PAGAMENTO FORNECEDOR - NF 1080552 ALMOX\/MATERIAL DE LIMPEZA",
+  "id": 92,
+  "label": [
+    {
+      "start": 3,
+      "end": 10,
+      "text": "1080552",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 64,
+      "end": 71,
+      "text": "1080552",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 93,
+  "created_at": "2026-04-26T14:39:36.773231Z",
+  "updated_at": "2026-04-26T14:39:36.773252Z",
+  "lead_time": 8.044
+},
+{
+  "text": "COMPRA DE MERCADORIAS 1100626  0 11\/09\/2024 BRASLIMPO COMERCIAL LTDA",
+  "id": 93,
+  "label": [
+    {
+      "start": 22,
+      "end": 29,
+      "text": "1100626",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 94,
+  "created_at": "2026-04-26T14:39:42.603470Z",
+  "updated_at": "2026-04-26T14:39:42.603526Z",
+  "lead_time": 4.411
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/06\/2024 NF 18440 BRINDES SUZANO",
+  "id": 94,
+  "label": [
+    {
+      "start": 56,
+      "end": 61,
+      "text": "18440",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 95,
+  "created_at": "2026-04-26T14:39:52.104830Z",
+  "updated_at": "2026-04-26T14:39:52.104853Z",
+  "lead_time": 4.508
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/04\/2024 NF 319734 BRS SUPRIMENTOS",
+  "id": 95,
+  "label": [
+    {
+      "start": 56,
+      "end": 62,
+      "text": "319734",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 96,
+  "created_at": "2026-04-26T14:39:57.278076Z",
+  "updated_at": "2026-04-26T14:39:57.278099Z",
+  "lead_time": 3.548
+},
+{
+  "text": "COMPRA DE MERCADORIAS 16999  1 25\/09\/2024 BT COMERCIO DE MATERIAIS DE PINTURA E ASSESSORIOS LTDA.",
+  "id": 96,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "16999",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 97,
+  "created_at": "2026-04-26T14:40:03.110535Z",
+  "updated_at": "2026-04-26T14:40:03.110558Z",
+  "lead_time": 4.395
+},
+{
+  "text": "COMPRA DE MERCADORIAS 514  1 17\/09\/2024 Caex Comunicação Visual e Copiadora Ltda  EPP",
+  "id": 97,
+  "label": [
+    {
+      "start": 22,
+      "end": 25,
+      "text": "514",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 98,
+  "created_at": "2026-04-26T14:40:11.782196Z",
+  "updated_at": "2026-04-26T14:40:11.782227Z",
+  "lead_time": 3.767
+},
+{
+  "text": "NF 537 CAEX COMUNICAÇÃO VISUL - PAGAMENTO FORNECEDOR - NF 537 FAIXA ANIVERSARIO",
+  "id": 98,
+  "label": [
+    {
+      "start": 3,
+      "end": 6,
+      "text": "537",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 58,
+      "end": 61,
+      "text": "537",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 99,
+  "created_at": "2026-04-26T14:40:20.804764Z",
+  "updated_at": "2026-04-26T14:40:20.804787Z",
+  "lead_time": 7.398
+},
+{
+  "text": "COMPRA DE MERCADORIAS 537  1 24\/09\/2024 Caex Comunicação Visual e Copiadora Ltda  EPP",
+  "id": 99,
+  "label": [
+    {
+      "start": 22,
+      "end": 25,
+      "text": "537",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 100,
+  "created_at": "2026-04-26T14:40:26.435185Z",
+  "updated_at": "2026-04-26T14:40:26.435220Z",
+  "lead_time": 4.406
+},
+{
+  "text": "ENTRADA DE MERC P\/CONSERTO 4749  4 04\/09\/2024 Caiman Distribuidora Ltda.",
+  "id": 100,
+  "label": [
+    {
+      "start": 27,
+      "end": 31,
+      "text": "4749",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 101,
+  "created_at": "2026-04-26T14:40:34.659617Z",
+  "updated_at": "2026-04-26T14:40:34.659637Z",
+  "lead_time": 6.25
+},
+{
+  "text": "SERV. CONTRATADOS 295139  - 04\/09\/2024 CAMARA DE DIRIGENTES LOJISTAS DE SAO PAULO",
+  "id": 101,
+  "label": [
+    {
+      "start": 18,
+      "end": 24,
+      "text": "295139",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 102,
+  "created_at": "2026-04-26T14:40:41.764716Z",
+  "updated_at": "2026-04-26T14:40:41.764748Z",
+  "lead_time": 4.834
+},
+{
+  "text": "NF 295139 CAMARA DE DIRIGENTES - PAGAMENTO FORNECEDOR - NF 295139 CONSULTA SPC (SERVIÇO DE PROTEÇÃO AO CRÉDITO)",
+  "id": 102,
+  "label": [
+    {
+      "start": 3,
+      "end": 9,
+      "text": "295139",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 59,
+      "end": 65,
+      "text": "295139",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 103,
+  "created_at": "2026-04-26T14:40:53.509898Z",
+  "updated_at": "2026-04-26T14:40:53.509920Z",
+  "lead_time": 9.246
+},
+{
+  "text": "NFS 9911 EASY LOCK - PAGAMENTO FORNECEDOR - NFS 9911 ATUALIZAÇÃO TECNOLOGIA 3 UNIDADES PARC 3\/3",
+  "id": 103,
+  "label": [
+    {
+      "start": 4,
+      "end": 8,
+      "text": "9911",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 48,
+      "end": 52,
+      "text": "9911",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 104,
+  "created_at": "2026-04-26T14:41:03.739726Z",
+  "updated_at": "2026-04-26T14:41:03.739747Z",
+  "lead_time": 8.394
+},
+{
+  "text": "NFS 9912 CARDAMONE E CARDAMONE - PAGAMENTO FORNECEDOR - NFS 9912 COMPRA DE ISCA MÓVEL",
+  "id": 104,
+  "label": [
+    {
+      "start": 4,
+      "end": 8,
+      "text": "9912",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 60,
+      "end": 64,
+      "text": "9912",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 105,
+  "created_at": "2026-04-26T14:46:37.375605Z",
+  "updated_at": "2026-04-26T14:46:37.375629Z",
+  "lead_time": 6.015
+},
+{
+  "text": "SERV. CONTRATADOS 10038  - 19\/09\/2024 CARDAMONE E CARDAMONE LTDA",
+  "id": 105,
+  "label": [
+    {
+      "start": 18,
+      "end": 23,
+      "text": "10038",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 106,
+  "created_at": "2026-04-26T14:46:43.760283Z",
+  "updated_at": "2026-04-26T14:46:43.760319Z",
+  "lead_time": 3.63
+},
+{
+  "text": "ISS RETIDO 10038  - 19\/09\/2024 CARDAMONE E CARDAMONE LTDA",
+  "id": 106,
+  "label": [
+    {
+      "start": 11,
+      "end": 16,
+      "text": "10038",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 107,
+  "created_at": "2026-04-26T14:46:48.844655Z",
+  "updated_at": "2026-04-26T14:46:48.844677Z",
+  "lead_time": 3.272
+},
+{
+  "text": "SERV. CONTRATADOS 10061  - 26\/09\/2024 CARDAMONE E CARDAMONE LTDA",
+  "id": 107,
+  "label": [
+    {
+      "start": 18,
+      "end": 23,
+      "text": "10061",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 108,
+  "created_at": "2026-04-26T14:47:01.819206Z",
+  "updated_at": "2026-04-26T14:47:01.819228Z",
+  "lead_time": 6.868
+},
+{
+  "text": "SERV. CONTRATADOS 10062  - 26\/09\/2024 CARDAMONE E CARDAMONE LTDA",
+  "id": 108,
+  "label": [
+    {
+      "start": 18,
+      "end": 23,
+      "text": "10062",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 109,
+  "created_at": "2026-04-26T14:47:09.064066Z",
+  "updated_at": "2026-04-26T14:47:09.064088Z",
+  "lead_time": 5.334
+},
+{
+  "text": "NFS 10038 CARDAMONE E CARDAMONE - PAGAMENTO FORNECEDOR - NFS 10038 MENSALIDADE RASTREAMENTO",
+  "id": 109,
+  "label": [
+    {
+      "start": 4,
+      "end": 9,
+      "text": "10038",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 61,
+      "end": 66,
+      "text": "10038",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 110,
+  "created_at": "2026-04-26T14:47:36.824597Z",
+  "updated_at": "2026-04-26T14:47:36.824620Z",
+  "lead_time": 8.174
+},
+{
+  "text": "COMPELENTO PROVISAO DESPESAS CARDAMONE",
+  "id": 110,
+  "annotator": 2,
+  "annotation_id": 111,
+  "created_at": "2026-04-26T14:47:49.742378Z",
+  "updated_at": "2026-04-26T14:47:49.742403Z",
+  "lead_time": 3.729
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/06\/2024 NF 24132,24133 E 24133 CARGA PESADA COMERCIAL DE ENCERADOS",
+  "id": 111,
+  "label": [
+    {
+      "start": 56,
+      "end": 61,
+      "text": "24132",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 62,
+      "end": 67,
+      "text": "24133",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 70,
+      "end": 75,
+      "text": "24133",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 112,
+  "created_at": "2026-04-26T14:48:22.212994Z",
+  "updated_at": "2026-04-26T14:48:22.213029Z",
+  "lead_time": 30.719
+},
+{
+  "text": "PAGAMENTO CARTAO DE CREDITO NF 12218 CARLA PEREIRA BOBINAS",
+  "id": 112,
+  "label": [
+    {
+      "start": 31,
+      "end": 36,
+      "text": "12218",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 113,
+  "created_at": "2026-04-26T14:49:18.200544Z",
+  "updated_at": "2026-04-26T14:49:18.200567Z",
+  "lead_time": 10.656
+},
+{
+  "text": "COMPRA DE MERCADORIAS 31084  2 09\/09\/2024 CASA ABRICO PRESENTES E UTILIDADES LTDA",
+  "id": 113,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "31084",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 114,
+  "created_at": "2026-04-26T14:49:25.770119Z",
+  "updated_at": "2026-04-26T14:49:25.770141Z",
+  "lead_time": 4.468
+},
+{
+  "text": "COMPRA DE MERCADORIAS 36247  1 13\/09\/2024 CASA DA VASSOURA DESCARTAVEIS E ARMARINHOS EIRELI",
+  "id": 114,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "36247",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 115,
+  "created_at": "2026-04-26T14:49:31.270676Z",
+  "updated_at": "2026-04-26T14:49:31.270708Z",
+  "lead_time": 2.839
+},
+{
+  "text": "TRANSFERENCIA PAGAMENTO CARTAO DE CREDITO 05\/07\/2024 NF 40436 3PRODUTOS",
+  "id": 115,
+  "label": [
+    {
+      "start": 56,
+      "end": 61,
+      "text": "40436",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 116,
+  "created_at": "2026-04-26T14:49:36.269223Z",
+  "updated_at": "2026-04-26T14:49:36.269257Z",
+  "lead_time": 3.873
+},
+{
+  "text": "COMPRA DE MERCADORIAS 6371  1 24\/09\/2024 CASA DE BATERIAS PAULISTA LTDA",
+  "id": 116,
+  "label": [
+    {
+      "start": 22,
+      "end": 26,
+      "text": "6371",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 117,
+  "created_at": "2026-04-26T14:49:43.153661Z",
+  "updated_at": "2026-04-26T14:49:43.153683Z",
+  "lead_time": 3.983
+},
+{
+  "text": "COMPRA DE MERCADORIAS 198570  1 26\/09\/2024 CENTRO DE SERVICOS FRANGO ASSADO -NORTE LTDA",
+  "id": 135,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "198570",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 118,
+  "created_at": "2026-04-26T14:49:57.907085Z",
+  "updated_at": "2026-04-26T14:49:57.907120Z",
+  "lead_time": 5.893
+},
+{
+  "text": "COMPRA DE MERCADORIAS 5967858  1 06\/09\/2024 CLASP COMERCIAL LTDA",
+  "id": 137,
+  "label": [
+    {
+      "start": 22,
+      "end": 29,
+      "text": "5967858",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 119,
+  "created_at": "2026-04-26T14:50:03.576364Z",
+  "updated_at": "2026-04-26T14:50:03.576385Z",
+  "lead_time": 2.884
+},
+{
+  "text": "COMPRA DE MERCADORIAS 38407  1 13\/09\/2024 COM DE FERRAGENS E FERRAMENTAS INGA LTDA",
+  "id": 141,
+  "label": [
+    {
+      "start": 22,
+      "end": 27,
+      "text": "38407",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 120,
+  "created_at": "2026-04-26T14:50:10.189958Z",
+  "updated_at": "2026-04-26T14:50:10.189981Z",
+  "lead_time": 2.623
+},
+{
+  "text": "COMPRA DE MERCADORIAS 470160  1 30\/09\/2024 COMP.DO CAMINHAO COM.PECAS VEIC.AUTOM.LTDA - EPP",
+  "id": 152,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "470160",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 121,
+  "created_at": "2026-04-26T14:50:39.663114Z",
+  "updated_at": "2026-04-26T14:50:39.663136Z",
+  "lead_time": 3.419
+},
+{
+  "text": "COMPRA DE MERCADORIAS 427600  1 30\/09\/2024 COMPANHEIRO DO CAMINHAO COMERCIO E SERVICO PARA VEICULOS AUT",
+  "id": 157,
+  "label": [
+    {
+      "start": 22,
+      "end": 28,
+      "text": "427600",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 122,
+  "created_at": "2026-04-26T14:50:48.602790Z",
+  "updated_at": "2026-04-26T14:50:48.602812Z",
+  "lead_time": 5.488
 }
 ]
