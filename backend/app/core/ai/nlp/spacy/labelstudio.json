@@ -19,7 +19,7 @@
   "lead_time": 47.05
 },
 {
-  "text": "COMPRA DE MERCADORIAS 196198  2 06\/09\/2024 1 THONY FERRAGEM LTDA",
+  "text": "COMPRA DE MERCADORIAS 196198  2 06\/09\/2024 1 - THONY FERRAGEM LTDA",
   "id": 3,
   "annotator": 2,
   "annotation_id": 3,
@@ -2408,5 +2408,1189 @@
   "created_at": "2026-04-26T14:50:48.602790Z",
   "updated_at": "2026-04-26T14:50:48.602812Z",
   "lead_time": 5.488
+},
+{
+  "text": "121209 PP *ASTRO DISTR CARTAO DE CREDITO",
+  "id": 793,
+  "label": [
+    {
+      "start": 0,
+      "end": 6,
+      "text": "121209",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 178,
+  "created_at": "2026-04-28T20:17:12.962765Z",
+  "updated_at": "2026-04-28T20:17:12.962785Z",
+  "lead_time": 3.107
+},
+{
+  "text": "14057 MERCADOLIVRE*2PRODUTOS CARTAO DE CREDITO",
+  "id": 795,
+  "label": [
+    {
+      "start": 0,
+      "end": 5,
+      "text": "14057",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 123,
+  "created_at": "2026-04-28T20:03:05.716411Z",
+  "updated_at": "2026-04-28T20:03:05.716438Z",
+  "lead_time": 6.363
+},
+{
+  "text": "149997 MERCADOLIVRE*BIAHAIR CARTAO DE CREDITO",
+  "id": 796,
+  "label": [
+    {
+      "start": 0,
+      "end": 6,
+      "text": "149997",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 124,
+  "created_at": "2026-04-28T20:03:53.239064Z",
+  "updated_at": "2026-04-28T20:03:53.239086Z",
+  "lead_time": 4.24
+},
+{
+  "text": "155910 MERCADOLIVRE*13PRODUTOS CARTAO DE CREDITO",
+  "id": 797,
+  "annotator": 2,
+  "annotation_id": 6,
+  "created_at": "2026-04-28T20:03:56.026949Z",
+  "updated_at": "2026-04-28T20:03:56.026969Z",
+  "lead_time": 1.6
+},
+{
+  "text": "15650 MERCADOLIVRE*14PRODUTOS CARTAO DE CREDITO",
+  "id": 798,
+  "annotator": 2,
+  "annotation_id": 126,
+  "created_at": "2026-04-28T20:03:59.097962Z",
+  "updated_at": "2026-04-28T20:03:59.097984Z",
+  "lead_time": 1.738
+},
+{
+  "text": "162\/162046\/ MERCADOLIVRE*NI CARTAO DE CREDITO",
+  "id": 799,
+  "label": [
+    {
+      "start": 0,
+      "end": 3,
+      "text": "162",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 4,
+      "end": 10,
+      "text": "162046",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 127,
+  "created_at": "2026-04-28T20:04:20.155428Z",
+  "updated_at": "2026-04-28T20:04:20.155449Z",
+  "lead_time": 19.345
+},
+{
+  "text": "16814 MERCADOLIVRE*4PRODUTOS CARTAO DE CREDITO",
+  "id": 800,
+  "label": [
+    {
+      "start": 0,
+      "end": 5,
+      "text": "16814",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 128,
+  "created_at": "2026-04-28T20:04:24.582045Z",
+  "updated_at": "2026-04-28T20:04:24.582118Z",
+  "lead_time": 2.334
+},
+{
+  "text": "354648 MERCADOLIVRE*3PRODUTOS CARTAO DE CREDITO",
+  "id": 801,
+  "label": [
+    {
+      "start": 0,
+      "end": 6,
+      "text": "354648",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 129,
+  "created_at": "2026-04-28T20:04:27.841569Z",
+  "updated_at": "2026-04-28T20:04:27.841587Z",
+  "lead_time": 2.424
+},
+{
+  "text": "68325\/68323\/416478\/247672\/3355 MERCADOLIVRE*14PRODUTOS CARTAO DE CREDITO",
+  "id": 802,
+  "label": [
+    {
+      "start": 0,
+      "end": 5,
+      "text": "68325",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 6,
+      "end": 11,
+      "text": "68323",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "text": "416478",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 19,
+      "end": 25,
+      "text": "247672",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 26,
+      "end": 30,
+      "text": "3355",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 130,
+  "created_at": "2026-04-28T20:04:39.591680Z",
+  "updated_at": "2026-04-28T20:04:39.591702Z",
+  "lead_time": 10.831
+},
+{
+  "text": "BAIXA ADTO 06\/09\/2024, BAIXA NF 1 MARCOS QUILES ARAGAO",
+  "id": 803,
+  "label": [
+    {
+      "start": 32,
+      "end": 33,
+      "text": "1",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 157,
+  "created_at": "2026-04-28T20:12:01.781235Z",
+  "updated_at": "2026-04-28T20:12:01.781275Z",
+  "lead_time": 5.588
+},
+{
+  "text": "BAIXA ADTO 19\/09\/2024, BAIXA NF 1 MARCOS QUILLES ARAGAO",
+  "id": 804,
+  "label": [
+    {
+      "start": 32,
+      "end": 33,
+      "text": "1",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 158,
+  "created_at": "2026-04-28T20:12:06.644534Z",
+  "updated_at": "2026-04-28T20:12:06.644571Z",
+  "lead_time": 3.495
+},
+{
+  "text": "BIAXA ADTO 04\/10\/2024, BAIXA NF 1 MARCOS QUILLES ARAGAO",
+  "id": 805,
+  "label": [
+    {
+      "start": 32,
+      "end": 33,
+      "text": "1",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 159,
+  "created_at": "2026-04-28T20:12:10.569195Z",
+  "updated_at": "2026-04-28T20:12:10.569216Z",
+  "lead_time": 2.889
+},
+{
+  "text": "CAL LEVE 3 CAÇAMBA ROLLON",
+  "id": 806,
+  "annotator": 2,
+  "annotation_id": 177,
+  "created_at": "2026-04-28T20:16:36.771955Z",
+  "updated_at": "2026-04-28T20:16:36.771993Z",
+  "lead_time": 1.844
+},
+{
+  "text": "COMPLEMENTO LANCAMENTO NF46493 MERCADOLIVRE*5PRODUTOS CARTAO DE CREDITO ",
+  "id": 807,
+  "label": [
+    {
+      "start": 25,
+      "end": 30,
+      "text": "46493",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 131,
+  "created_at": "2026-04-28T20:04:48.501801Z",
+  "updated_at": "2026-04-28T20:04:48.501821Z",
+  "lead_time": 6.594
+},
+{
+  "text": "COMPLEMENTO NF NF61025 RODOPOSTO GUARAREMA LTDA CTF-ABASTECIM.VEICULOS ",
+  "id": 808,
+  "label": [
+    {
+      "start": 17,
+      "end": 22,
+      "text": "61025",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 160,
+  "created_at": "2026-04-28T20:12:20.939092Z",
+  "updated_at": "2026-04-28T20:12:20.939115Z",
+  "lead_time": 9.514
+},
+{
+  "text": "COMPLEMENTO NF NFS 37 GRASYANE GONÇALVES DE ALMEIDA LINS PASSAGENS AÉREAS PARA VISITA LEILÃO ",
+  "id": 809,
+  "label": [
+    {
+      "start": 19,
+      "end": 21,
+      "text": "37",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 150,
+  "created_at": "2026-04-28T20:10:45.486334Z",
+  "updated_at": "2026-04-28T20:10:45.486355Z",
+  "lead_time": 4.959
+},
+{
+  "text": "DESCONTO NF 106170 POSTO ROTA 80 LTDA CTF-ABASTECIM.VEICULOS",
+  "id": 811,
+  "label": [
+    {
+      "start": 12,
+      "end": 18,
+      "text": "106170",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 161,
+  "created_at": "2026-04-28T20:12:29.266493Z",
+  "updated_at": "2026-04-28T20:12:29.266526Z",
+  "lead_time": 3.878
+},
+{
+  "text": "FAT .126721 MARTELO ROMPEDOR 10 KG FERNANDA DA SILVA SAMBO ME",
+  "id": 812,
+  "label": [
+    {
+      "start": 5,
+      "end": 11,
+      "text": "126721",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 132,
+  "created_at": "2026-04-28T20:06:42.322565Z",
+  "updated_at": "2026-04-28T20:06:42.322605Z",
+  "lead_time": 5.427
+},
+{
+  "text": "FAT. 126771 LOCAÇÃO DE BETONEIRA PARA JGS  FERNANDA DA SILVA SAMBO ME",
+  "id": 813,
+  "label": [
+    {
+      "start": 5,
+      "end": 11,
+      "text": "126771",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 133,
+  "created_at": "2026-04-28T20:06:48.724576Z",
+  "updated_at": "2026-04-28T20:06:48.724615Z",
+  "lead_time": 3.19
+},
+{
+  "text": "FAT. 127131 FERNANDA DA SILVA SAMBO -ME MARTELO ROMPEDOR",
+  "id": 814,
+  "label": [
+    {
+      "start": 5,
+      "end": 11,
+      "text": "127131",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 134,
+  "created_at": "2026-04-28T20:06:53.617853Z",
+  "updated_at": "2026-04-28T20:06:53.617896Z",
+  "lead_time": 2.173
+},
+{
+  "text": "FAT. 127425 LOCAÇÃO MARTELO ROMPEDOR WOLNEY  FERNANDA DA SILVA SAMBO",
+  "id": 815,
+  "label": [
+    {
+      "start": 5,
+      "end": 11,
+      "text": "127425",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 135,
+  "created_at": "2026-04-28T20:06:57.110930Z",
+  "updated_at": "2026-04-28T20:06:57.110967Z",
+  "lead_time": 2.362
+},
+{
+  "text": "FAT.127937 MARTELO ROMPEDOR 10 KG PONTEIRO TALHADEIRA  FERNANDA DA SILVA SAMBO-ME",
+  "id": 816,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "127937",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 136,
+  "created_at": "2026-04-28T20:07:00.596546Z",
+  "updated_at": "2026-04-28T20:07:00.596580Z",
+  "lead_time": 1.968
+},
+{
+  "text": "FAT. 16778 LOCAÇÃO MAQUINA DE CAFÉ MARCOFFEE COMERCIAL E SERVIÇOS LTDA",
+  "id": 817,
+  "label": [
+    {
+      "start": 5,
+      "end": 10,
+      "text": "16778",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 137,
+  "created_at": "2026-04-28T20:07:03.598992Z",
+  "updated_at": "2026-04-28T20:07:03.599012Z",
+  "lead_time": 2.005
+},
+{
+  "text": "FAT.291091\/291254 CTF TECHNOLOGIES DO BRASIL LTDA",
+  "id": 818,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "291091",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 11,
+      "end": 17,
+      "text": "291254",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 138,
+  "created_at": "2026-04-28T20:07:10.825605Z",
+  "updated_at": "2026-04-28T20:07:10.825628Z",
+  "lead_time": 4.693
+},
+{
+  "text": "FAT.299748 LOCALIZA LIMITADA LOCAÇÃO DE VEICULO P\/ MANOLO EM 02\/02 Á 04\/02- ARACAJU\/SE",
+  "id": 819,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "299748",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 139,
+  "created_at": "2026-04-28T20:07:14.363070Z",
+  "updated_at": "2026-04-28T20:07:14.363093Z",
+  "lead_time": 2.327
+},
+{
+  "text": "FAT.821558 LOCAÇÃO 3 VEÍCULOS - RUH2I63\/ RUJ5C36\/ RUJ5C38 USECAR LOCADOR DE VEICULOS S\/A",
+  "id": 820,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "821558",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 32,
+      "end": 39,
+      "text": "RUH2I63",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 41,
+      "end": 48,
+      "text": "RUJ5C36",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 50,
+      "end": 57,
+      "text": "RUJ5C38",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 140,
+  "created_at": "2026-04-28T20:07:18.011848Z",
+  "updated_at": "2026-04-28T20:08:03.257285Z",
+  "lead_time": 12.001000000000001
+},
+{
+  "text": "FAT.823579 USECAR LOCADOR DE VEICULOS S\/A LOCAÇÃO 3 VEÍCULOS - RUH2I63\/ RUJ5C36\/ RUJ5C38",
+  "id": 821,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "823579",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 63,
+      "end": 70,
+      "text": "RUH2I63",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 72,
+      "end": 79,
+      "text": "RUJ5C36",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 81,
+      "end": 88,
+      "text": "RUJ5C38",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 141,
+  "created_at": "2026-04-28T20:07:29.751571Z",
+  "updated_at": "2026-04-28T20:08:11.065871Z",
+  "lead_time": 10.465
+},
+{
+  "text": "FAT.823580 USECAR LOCADOR DE VEICULOS S\/A LOCAÇÃO 3 VEÍCULOS - RUH2I63\/ RUJ5C36\/ RUJ5C38",
+  "id": 822,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "823580",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 63,
+      "end": 70,
+      "text": "RUH2I63",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 72,
+      "end": 79,
+      "text": "RUJ5C36",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 81,
+      "end": 88,
+      "text": "RUJ5C38",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 142,
+  "created_at": "2026-04-28T20:07:34.809209Z",
+  "updated_at": "2026-04-28T20:08:17.916807Z",
+  "lead_time": 8.488
+},
+{
+  "text": "FAT.823581 USECAR LOCADOR DE VEICULOS S\/A LOCAÇÃO 3 VEÍCULOS - RUH2I63\/ RUJ5C36\/ RUJ5C38",
+  "id": 823,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "823581",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 63,
+      "end": 70,
+      "text": "RUH2I63",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 72,
+      "end": 79,
+      "text": "RUJ5C36",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 81,
+      "end": 88,
+      "text": "RUJ5C38",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 143,
+  "created_at": "2026-04-28T20:08:26.146163Z",
+  "updated_at": "2026-04-28T20:08:26.146181Z",
+  "lead_time": 7.169
+},
+{
+  "text": "FAT.825893 KM EXEDENTE VEÍCULO - RUJ-5C38 USECAR LOCADOR DE VEICULOS S\/A",
+  "id": 824,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "825893",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 33,
+      "end": 41,
+      "text": "RUJ-5C38",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 144,
+  "created_at": "2026-04-28T20:08:40.094062Z",
+  "updated_at": "2026-04-28T20:08:40.094082Z",
+  "lead_time": 12.686
+},
+{
+  "text": "FAT AAAJU-305898 LOCALIZA",
+  "id": 825,
+  "label": [
+    {
+      "start": 4,
+      "end": 16,
+      "text": "AAAJU-305898",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 145,
+  "created_at": "2026-04-28T20:08:55.235081Z",
+  "updated_at": "2026-04-28T20:09:25.741392Z",
+  "lead_time": 41.396
+},
+{
+  "text": "FAT ACMAA-138322 LOCALIZA",
+  "id": 826,
+  "label": [
+    {
+      "start": 4,
+      "end": 16,
+      "text": "ACMAA-138322",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 146,
+  "created_at": "2026-04-28T20:09:32.604246Z",
+  "updated_at": "2026-04-28T20:09:32.604268Z",
+  "lead_time": 4.022
+},
+{
+  "text": "FAT.AJUA280254 ALUGUEL PARA NEUSA  LOCALIZA LIMITADA",
+  "id": 827,
+  "label": [
+    {
+      "start": 4,
+      "end": 14,
+      "text": "AJUA280254",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 147,
+  "created_at": "2026-04-28T20:09:39.067557Z",
+  "updated_at": "2026-04-28T20:09:39.067588Z",
+  "lead_time": 4.214
+},
+{
+  "text": "FAT. BEFF040942 ALUGUEL PARA TRABALHAR NA ELETROBRAS- BELFORD ROXO  LOCALIZA RENT A CAR S\/A",
+  "id": 828,
+  "label": [
+    {
+      "start": 5,
+      "end": 15,
+      "text": "BEFF040942",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 148,
+  "created_at": "2026-04-28T20:09:57.538492Z",
+  "updated_at": "2026-04-28T20:09:57.538512Z",
+  "lead_time": 17.133
+},
+{
+  "text": "FAT BEFF040942 LOCALIZA PAGTO ANTECIPADO DE LOCACOES",
+  "id": 829,
+  "label": [
+    {
+      "start": 4,
+      "end": 14,
+      "text": "BEFF040942",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 149,
+  "created_at": "2026-04-28T20:10:04.471317Z",
+  "updated_at": "2026-04-28T20:10:04.471351Z",
+  "lead_time": 4.729
+},
+{
+  "text": "JUROS NF 110452 POSTO ROTA 80 LTDA CTF-ABASTECIM.VEICULOS",
+  "id": 831,
+  "label": [
+    {
+      "start": 9,
+      "end": 15,
+      "text": "110452",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 162,
+  "created_at": "2026-04-28T20:12:33.194496Z",
+  "updated_at": "2026-04-28T20:12:33.194515Z",
+  "lead_time": 3.022
+},
+{
+  "text": "MULTAS VEICULOS RUH-2I63 05\/12\/24 07:45; 16\/12\/24 09:20 - WOLNEY  USECAR LOCADOR DE VEICULOS S\/A",
+  "id": 836,
+  "label": [
+    {
+      "start": 16,
+      "end": 24,
+      "text": "RUH-2I63",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 176,
+  "created_at": "2026-04-28T20:15:17.657794Z",
+  "updated_at": "2026-04-28T20:15:17.657813Z",
+  "lead_time": 5.088
+},
+{
+  "text": "MULTIFORCA IND E COM LTDA AQUISIÇÃO DE 2 JULIETAS",
+  "id": 837,
+  "annotator": 2,
+  "annotation_id": 175,
+  "created_at": "2026-04-28T20:14:47.900978Z",
+  "updated_at": "2026-04-28T20:14:47.901018Z",
+  "lead_time": 2.137
+},
+{
+  "text": "NF  104233 POSTO O CARRETAO LTDA CTF-ABASTECIM.VEICULOS",
+  "id": 838,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "104233",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 163,
+  "created_at": "2026-04-28T20:12:36.320987Z",
+  "updated_at": "2026-04-28T20:12:36.321018Z",
+  "lead_time": 2.244
+},
+{
+  "text": "NF  1059824 MATERIAL DE LIMPEZA SALES DISTRIBUIDORA",
+  "id": 839,
+  "label": [
+    {
+      "start": 4,
+      "end": 11,
+      "text": "1059824",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 164,
+  "created_at": "2026-04-28T20:12:39.680702Z",
+  "updated_at": "2026-04-28T20:12:39.680722Z",
+  "lead_time": 2.537
+},
+{
+  "text": "NF 106170 POSTO ROTA 80 LTDA CTF-ABASTECIM.VEICULOS",
+  "id": 840,
+  "label": [
+    {
+      "start": 3,
+      "end": 9,
+      "text": "106170",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 165,
+  "created_at": "2026-04-28T20:12:42.892411Z",
+  "updated_at": "2026-04-28T20:12:42.892453Z",
+  "lead_time": 2.335
+},
+{
+  "text": "NF 110452 POSTO ROTA 80 LTDA CTF-ABASTECIM.VEICULOS",
+  "id": 841,
+  "label": [
+    {
+      "start": 3,
+      "end": 9,
+      "text": "110452",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 166,
+  "created_at": "2026-04-28T20:12:46.067007Z",
+  "updated_at": "2026-04-28T20:12:46.067031Z",
+  "lead_time": 2.323
+},
+{
+  "text": "NF 1276 ABASTECIMENTOS 16\/12\/2024 À 01\/01\/2025 AUTO POSTO PAPA JOAO XXIII LTDA",
+  "id": 842,
+  "label": [
+    {
+      "start": 3,
+      "end": 7,
+      "text": "1276",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 167,
+  "created_at": "2026-04-28T20:12:50.279672Z",
+  "updated_at": "2026-04-28T20:12:50.279697Z",
+  "lead_time": 3.327
+},
+{
+  "text": "NF 135496\/135534 PEÇAS AUTOMOTIVAS PARA REVISÃO FCE E GHH RIALAN LITORAL COMERCIO DE AUTOPECAS",
+  "id": 843,
+  "label": [
+    {
+      "start": 3,
+      "end": 9,
+      "text": "135496",
+      "labels": [
+        "IDENT"
+      ]
+    },
+    {
+      "start": 10,
+      "end": 16,
+      "text": "135534",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 168,
+  "created_at": "2026-04-28T20:12:56.237871Z",
+  "updated_at": "2026-04-28T20:12:56.237891Z",
+  "lead_time": 5.177
+},
+{
+  "text": "NF  137778 RIALAN LITORAL COMERCIO DE AUTOPECAS  PEÇAS AUTOMOTIVAS",
+  "id": 844,
+  "label": [
+    {
+      "start": 4,
+      "end": 10,
+      "text": "137778",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 169,
+  "created_at": "2026-04-28T20:13:00.110182Z",
+  "updated_at": "2026-04-28T20:13:00.110205Z",
+  "lead_time": 2.561
+},
+{
+  "text": "NF 1442 ABASTECIMENTOS 01\/01\/2025 À 16\/01\/2025 AUTO POSTO PAPA JOAO XXIII LTDA",
+  "id": 845,
+  "label": [
+    {
+      "start": 3,
+      "end": 7,
+      "text": "1442",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 170,
+  "created_at": "2026-04-28T20:13:04.921780Z",
+  "updated_at": "2026-04-28T20:13:04.921801Z",
+  "lead_time": 3.151
+},
+{
+  "text": "NF  2297 ABASTECIMENTOS BR PAPA JOÃO XXIII AUTO POSTO PAPA JOAO XXIII LTDA",
+  "id": 846,
+  "label": [
+    {
+      "start": 4,
+      "end": 8,
+      "text": "2297",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 171,
+  "created_at": "2026-04-28T20:13:08.421841Z",
+  "updated_at": "2026-04-28T20:13:08.421869Z",
+  "lead_time": 2.162
+},
+{
+  "text": "NF52869 DISTRIBUIDORA DE COMBUSTIVEIS ROSSO CTF-ABASTECIM.VEICULOS",
+  "id": 847,
+  "label": [
+    {
+      "start": 2,
+      "end": 7,
+      "text": "52869",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 172,
+  "created_at": "2026-04-28T20:13:45.306832Z",
+  "updated_at": "2026-04-28T20:13:45.306855Z",
+  "lead_time": 4.412
+},
+{
+  "text": "NF61025 RODOPOSTO GUARAREMA LTDA CTF-ABASTECIM.VEICULOS",
+  "id": 848,
+  "label": [
+    {
+      "start": 2,
+      "end": 7,
+      "text": "61025",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 173,
+  "created_at": "2026-04-28T20:14:04.226580Z",
+  "updated_at": "2026-04-28T20:14:04.226600Z",
+  "lead_time": 3.775
+},
+{
+  "text": "NFS 16 PRESTAÇÃO DE SERVIÇO  MARCOS QUILLES",
+  "id": 849,
+  "label": [
+    {
+      "start": 4,
+      "end": 6,
+      "text": "16",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 151,
+  "created_at": "2026-04-28T20:10:49.625185Z",
+  "updated_at": "2026-04-28T20:10:49.625204Z",
+  "lead_time": 2.91
+},
+{
+  "text": "NFS 16 PRESTAÇÃO DE SERVIÇO MARCOS QUILLES",
+  "id": 850,
+  "label": [
+    {
+      "start": 4,
+      "end": 6,
+      "text": "16",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 152,
+  "created_at": "2026-04-28T20:10:57.075968Z",
+  "updated_at": "2026-04-28T20:10:57.075989Z",
+  "lead_time": 6.573
+},
+{
+  "text": "NFS 16 PRESTAÇÃO DE SERVIÇO MARCOS QUILLES",
+  "id": 851,
+  "label": [
+    {
+      "start": 4,
+      "end": 6,
+      "text": "16",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 153,
+  "created_at": "2026-04-28T20:11:01.856025Z",
+  "updated_at": "2026-04-28T20:11:01.856062Z",
+  "lead_time": 2.919
+},
+{
+  "text": "NFS 3 PRESTAÇÃO DE SERVIÇO AUCOBRE GESTÃO DE RESIDUOS LTDA",
+  "id": 852,
+  "label": [
+    {
+      "start": 4,
+      "end": 5,
+      "text": "3",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 154,
+  "created_at": "2026-04-28T20:11:06.493836Z",
+  "updated_at": "2026-04-28T20:11:06.493857Z",
+  "lead_time": 3.753
+},
+{
+  "text": "NFS 3 PROJETO NOVA RECEPÇÃO ARNALDO PAULO NETO",
+  "id": 853,
+  "label": [
+    {
+      "start": 4,
+      "end": 5,
+      "text": "3",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 155,
+  "created_at": "2026-04-28T20:11:13.908710Z",
+  "updated_at": "2026-04-28T20:11:13.908736Z",
+  "lead_time": 6.357
+},
+{
+  "text": "NFS 8 PRESTAÇÃO DE SERVIÇOS JOSE MARIA MOSCA",
+  "id": 854,
+  "label": [
+    {
+      "start": 4,
+      "end": 5,
+      "text": "8",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 156,
+  "created_at": "2026-04-28T20:11:19.747095Z",
+  "updated_at": "2026-04-28T20:11:19.747128Z",
+  "lead_time": 4.735
+},
+{
+  "text": "REC.519 LOCAÇÃO DE ANDAIME - SIEMENS\/SANTA BARBARA D'OESTE ATEC ENGENHARIA",
+  "id": 856,
+  "label": [
+    {
+      "start": 4,
+      "end": 7,
+      "text": "519",
+      "labels": [
+        "IDENT"
+      ]
+    }
+  ],
+  "annotator": 2,
+  "annotation_id": 174,
+  "created_at": "2026-04-28T20:14:32.788402Z",
+  "updated_at": "2026-04-28T20:14:32.788423Z",
+  "lead_time": 4.806
 }
 ]
