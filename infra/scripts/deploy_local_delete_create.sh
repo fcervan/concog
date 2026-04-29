@@ -75,6 +75,7 @@ deploy_lambda () {
         --memory-size 1024 \
         --handler $HANDLER \
         --role $LAMBDA_ROLE \
+        --environment file://infra/scripts/env.json \
         --zip-file fileb://$ZIP_FILE
 
     echo "⏳ Aguardando lambda ficar ativa..."
