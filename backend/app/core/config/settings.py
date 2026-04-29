@@ -36,7 +36,7 @@ GROQ_MODEL = os.getenv(
 HYPERBOLIC_API_KEY = os.getenv("HYPERBOLIC_API_KEY")
 HYPERBOLIC_URL = os.getenv(
     "HYPERBOLIC_URL",
-    "https://api.hyperbolic.ai/v1/chat/completions"
+    "https://api.hyperbolic.xyz/v1/chat/completions"
 )
 HYPERBOLIC_MODEL = os.getenv(
     "HYPERBOLIC_MODEL",
