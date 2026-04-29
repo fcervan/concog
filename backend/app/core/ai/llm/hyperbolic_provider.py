@@ -1,3 +1,5 @@
+import json
+
 import requests
 
 from backend.app.core.config.settings import (
@@ -21,6 +23,9 @@ class HyperbolicProvider(BaseLLM):
 
         payload = {
             "model": self.model,
+            "max_tokens": 20000,
+            "temperature": 0.2,
+            "top_p": 0.8,
             "messages": [
                 {
                     "role": "system",
@@ -37,12 +42,14 @@ class HyperbolicProvider(BaseLLM):
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
         }
-
+        print(json.dumps(payload))
+        print(f"headers => {headers}")
+        print(f"URL => {self.url}")
         response = requests.post(
             self.url,
             json=payload,
             headers=headers,
-            timeout=20
+            timeout=120
         )
 
         response.raise_for_status()
