@@ -57,3 +57,5 @@ class ClassificarLancamentoService:
                 # - logar
                 # - mandar pra DLQ
                 # - ou só seguir
+
+        return {'statusCode': 200, 'success': True}
