@@ -7,13 +7,9 @@ Esse identificador pode ser um número de nota fiscal, compra de mercadoria, ent
 Após encontrar o identificador no campo histórico e perceber que não existe nenhum outro lançamento com o mesmo identificador, esse lançamento não deve ser agrupado. O mesmo deve acontecer se você não encontrar um identificador.
 
 ## IMPORTANTE
-- A saída **precisa** ser apenas as linhas agrupada e a separação de grupo com 3 traços "---"
+- A saída **precisa** ser apenas as linhas agrupada e a separação de grupo com 3 traços "---", sem qualquer mensagem extra na saída
 - A primeira linha que é o título do CSV não pode estar na saída
 - Não pode conter nada além do resultado das linhas agrupadas
 - **Atenção para não duplicar lançamentos**
 - Atenção para não descartar algum lançamento. A quantidade de lançamentos informada na entrada precisa ser a mesma quantidade na saída
-- O campo LANCAMENTO_ID não deve ser considerado para qualquer tipo de análise. Ele é simplemente um id do registro auto incremental
-- Você deve adicionar uma coluna que será o status de Conciliado (C), Não Conciliado (N) ou Pendente (P)
-    - (C): você vai considerar Conciliado aqueles lançamentos que você consegui agrupar
-    - (N): os lançamentos que ficaram isolados sem qualquer agrupamento são os Não Conciliados
-    - (P): aqueles lançamentos que você até agrupou, mas não tem certeza se pode realmente ser um Conciliado, então marcará como Pendente
+- O campo HISTORICO_ID não deve ser considerado para qualquer tipo de análise. Ele é simplesmente um id do registro auto incremental

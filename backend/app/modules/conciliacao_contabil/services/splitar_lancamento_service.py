@@ -10,6 +10,7 @@ from backend.app.modules.conciliacao_contabil.services.cliente_service import Cl
 from backend.app.modules.conciliacao_contabil.services.lancamento_arquivo_service import LancamentoArquivoService
 from backend.app.modules.conciliacao_contabil.services.lancamento_service import LancamentoService
 from backend.app.core.database.unit_of_work import UnitOfWork
+from backend.app.utils.datetime_utils import now_sp_str
 
 
 class SplitarLancamentoService:
@@ -33,7 +34,7 @@ class SplitarLancamentoService:
             self.lancamento_arquivo = LancamentoArquivoService(uow)
             self.lancamento = LancamentoService(uow)
 
-            data_cad = '2026-03-23 16:09:20'
+            data_cad = now_sp_str()
 
             record = event["Records"][0]
 
