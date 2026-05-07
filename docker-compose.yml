@@ -38,7 +38,7 @@ services:
       REDIS_URL: redis://redis:6379
       MINIO_ENDPOINT: http://minio:9000
       MINIO_ACCESS_KEY: admin
-      MINIO_SECRET_KEY: admin
+      MINIO_SECRET_KEY: password
       DB_HOST: mysql-concog
       DB_PORT: 3306
       DB_NAME: concog
@@ -54,6 +54,8 @@ services:
     command: rq worker cc-processar-lancamento --url redis://redis:6379
     environment:
       ENV: local
+      QUEUE_BACKEND: redis
+      QUEUE_PROCESSAR_LANCAMENTO: cc-processar-lancamento
       REDIS_URL: redis://redis:6379
       MINIO_ENDPOINT: http://minio:9000
       MINIO_ACCESS_KEY: admin

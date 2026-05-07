@@ -3,3 +3,4 @@ pymysql
 python-dotenv
 openpyxl
 boto3
+spacy

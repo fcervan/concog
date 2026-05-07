@@ -1,20 +1,6 @@
 import os
-
-try:
-    from dotenv import load_dotenv
-
-    load_dotenv(override=True)
-    if os.getenv("ENV", "dev") != "prod":
-        load_dotenv()
-
-except ImportError:
-    pass
-# from dotenv import load_dotenv
-# from pathlib import Path
-#
-# # sobe até a raiz do projeto
-# BASE_DIR = Path(__file__).resolve().parents[4]
-# load_dotenv(BASE_DIR / ".env", override=True)
+from dotenv import load_dotenv
+load_dotenv()
 
 # ==============================
 # LLM CONFIG
