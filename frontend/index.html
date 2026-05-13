@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConciliaContábil - Conciliação Inteligente de Lançamentos</title>
+  <link rel="stylesheet" href="/statics/css/main.css">
+  <style>
+    .landing-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+    }
+    .landing-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+    }
+    .landing-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .landing-logo svg {
+      width: 40px;
+      height: 40px;
+      color: var(--primary);
+    }
+    .landing-nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .landing-nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .landing-nav-links a:hover {
+      color: white;
+    }
+    .landing-hero {
+      text-align: center;
+      padding: 120px 48px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .landing-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .landing-hero p {
+      font-size: 1.25rem;
+      color: #94a3b8;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    .landing-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+    .btn-landing-primary {
+      background: var(--primary);
+      color: white;
+      padding: 16px 32px;
+      border-radius: var(--radius-md);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-landing-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .btn-landing-secondary {
+      background: transparent;
+      color: white;
+      padding: 16px 32px;
+      border-radius: var(--radius-md);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.2);
+      transition: all 0.2s;
+    }
+    .btn-landing-secondary:hover {
+      border-color: white;
+      background: rgba(255,255,255,0.1);
+    }
+    .landing-features {
+      padding: 80px 48px;
+      background: var(--bg-primary);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--primary-light);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+    .feature-card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .landing-footer {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="landing-page">
+    <nav class="landing-nav">
+      <div class="landing-logo">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+            d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+        </svg>
+        <span>ConciliaContábil</span>
+      </div>
+      <div class="landing-nav-links">
+        <a href="#features">Funcionalidades</a>
+        <a href="pages/login.html">Entrar</a>
+        <a href="pages/register.html" class="btn-landing-primary" style="padding: 10px 24px; font-size: 0.95rem;">Começar Grátis</a>
+      </div>
+    </nav>
+
+    <section class="landing-hero">
+      <h1>Conciliação Contábil com Inteligência Artificial</h1>
+      <p>Automatize a conciliação dos seus lançamentos contábeis. Nossa IA analisa, classifica e agrupa seus dados em segundos, reduzindo erros e economizando horas de trabalho manual.</p>
+      <div class="landing-cta">
+        <a href="pages/register.html" class="btn-landing-primary">Começar Agora</a>
+        <a href="pages/login.html" class="btn-landing-secondary">Já tenho conta</a>
+      </div>
+    </section>
+  </div>
+
+  <section id="features" class="landing-features">
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+          </svg>
+        </div>
+        <h3>Upload Inteligente</h3>
+        <p>Envie planilhas em Excel ou CSV. Nosso sistema reconhece automaticamente o formato e extrai os lançamentos contábeis.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3>IA Classificadora</h3>
+        <p>Nossa inteligência artificial analisa cada lançamento e determina se está Conciliado, Não Conciliado ou Pendente com alta precisão.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <h3>Dashboard em Tempo Real</h3>
+        <p>Acompanhe estatísticas, visualize gráficos e monitore o status da conciliação em um painel completo e intuitivo.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+        <h3>Consulta Avançada</h3>
+        <p>Filtre lançamentos por status, data, valor e identificador. Encontre rapidamente o que precisa sem perder tempo.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3>Validação Manual</h3>
+        <p>Revise e ajuste o status dos lançamentos quando necessário. Você tem o controle final sobre a conciliação.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <h3>Segurança Total</h3>
+        <p>Seus dados são protegidos com criptografia. Autenticação JWT e controle de acesso garantem a segurança da sua informação.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="landing-footer">
+    <p>© 2026 ConciliaContábil. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

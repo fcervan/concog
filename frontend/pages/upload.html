@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload de Planilha - ConciliaContábil</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .upload-zone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 24px;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--bg-secondary);
+      margin-bottom: 32px;
+    }
+    .upload-zone:hover,
+    .upload-zone.dragover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .upload-zone-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      color: var(--primary);
+    }
+    .upload-zone-text {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .upload-zone-hint {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .upload-zone input[type="file"] {
+      display: none;
+    }
+    .file-list {
+      margin-top: 24px;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+    .file-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary-light);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .file-info {
+      flex: 1;
+    }
+    .file-name {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .file-size {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .file-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .progress-bar {
+      width: 200px;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+    .history-section {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <h1 class="page-title">Upload de Planilha</h1>
+      </div>
+
+      <div class="content-body">
+        <div id="alerts-container"></div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Enviar nova planilha</h2>
+          </div>
+          <div class="card-body">
+            <div class="upload-zone" id="uploadZone">
+              <input type="file" id="fileInput" accept=".xlsx,.xls,.csv">
+              <svg class="upload-zone-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+              </svg>
+              <div class="upload-zone-text">
+                Arraste e solte sua planilha aqui
+              </div>
+              <div class="upload-zone-hint">
+                ou clique para selecionar · Formatos suportados: .xlsx, .xls, .csv
+              </div>
+            </div>
+
+            <div class="file-list" id="fileList"></div>
+          </div>
+        </div>
+
+        <div class="history-section">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Histórico de Uploads</h2>
+            </div>
+            <div class="card-body">
+              <div class="table-container">
+                <table class="data-table" id="historyTable">
+                  <thead>
+                    <tr>
+                      <th>Arquivo</th>
+                      <th>Tipo</th>
+                      <th>Registros</th>
+                      <th>Status</th>
+                      <th>Data</th>
+                    </tr>
+                  </thead>
+                  <tbody id="historyBody">
+                    <tr>
+                      <td colspan="5" style="text-align: center; color: var(--text-muted);">
+                        Nenhum upload realizado ainda
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/sidebar.js"></script>
+  <script>
+    // Proteger rota
+    if (!auth.requireAuth()) {
+      throw new Error('Não autenticado');
+    }
+
+    sidebar.init();
+
+    const uploadZone = document.getElementById('uploadZone');
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+
+    // Click para abrir file picker
+    uploadZone.addEventListener('click', () => fileInput.click());
+
+    // Drag & Drop
+    uploadZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadZone.classList.add('dragover');
+    });
+
+    uploadZone.addEventListener('dragleave', () => {
+      uploadZone.classList.remove('dragover');
+    });
+
+    uploadZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadZone.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        handleFile(files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        handleFile(e.target.files[0]);
+      }
+    });
+
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    function handleFile(file) {
+      // Validar extensão
+      const allowedExtensions = ['.xlsx', '.xls', '.csv'];
+      const ext = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+
+      if (!allowedExtensions.includes(ext)) {
+        ui.showError('Formato não suportado. Use: .xlsx, .xls ou .csv');
+        return;
+      }
+
+      // Criar elemento de progresso
+      const fileId = 'file-' + Date.now();
+      const fileItem = document.createElement('div');
+      fileItem.className = 'file-item';
+      fileItem.id = fileId;
+      fileItem.innerHTML = `
+        <div class="file-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <div class="file-info">
+          <div class="file-name">${file.name}</div>
+          <div class="file-size">${formatFileSize(file.size)}</div>
+        </div>
+        <div class="file-status">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-${fileId}" style="width: 0%"></div>
+          </div>
+          <span id="status-${fileId}">0%</span>
+        </div>
+      `;
+
+      fileList.appendChild(fileItem);
+
+      // Fazer upload
+      uploadFile(file, fileId);
+    }
+
+    async function uploadFile(file, fileId) {
+      const progressBar = document.getElementById(`progress-${fileId}`);
+      const statusText = document.getElementById(`status-${fileId}`);
+
+      try {
+        const result = await api.uploadFile(
+          CONFIG.ENDPOINTS.UPLOAD,
+          file,
+          (percent) => {
+            progressBar.style.width = percent + '%';
+            statusText.textContent = percent + '%';
+          }
+        );
+
+        statusText.textContent = '✓ Concluído';
+        statusText.style.color = 'var(--status-conciliado)';
+        ui.showSuccess(`Arquivo "${result.nome_arquivo}" enviado com sucesso! ${result.mensagem}`);
+
+        // Recarregar histórico
+        loadHistory();
+
+      } catch (error) {
+        statusText.textContent = '✗ Erro';
+        statusText.style.color = 'var(--status-nao-conciliado)';
+        ui.showError('Erro no upload: ' + error.message);
+      }
+    }
+
+    async function loadHistory() {
+      try {
+        const history = await api.get(CONFIG.ENDPOINTS.UPLOAD_HISTORY);
+        const tbody = document.getElementById('historyBody');
+
+        if (history.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text-muted);">
+                Nenhum upload realizado ainda
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = history.map(item => `
+          <tr>
+            <td>${item.nome_arquivo}</td>
+            <td>${item.tipo_arquivo.toUpperCase()}</td>
+            <td>${item.total_registros}</td>
+            <td>${ui.getStatusBadge(item.status)}</td>
+            <td>${ui.formatDateTime(item.processado_em)}</td>
+          </tr>
+        `).join('');
+
+      } catch (error) {
+        console.error('Erro ao carregar histórico:', error);
+      }
+    }
+
+    // Carregar histórico ao iniciar
+    loadHistory();
+  </script>
+</body>
+</html>

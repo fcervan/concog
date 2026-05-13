@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validação de Lançamentos - ConciliaContábil</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .validation-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .validation-stats {
+      display: flex;
+      gap: 16px;
+    }
+    .validation-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .validation-stat.conciliado { background: var(--status-conciliado-bg); color: var(--status-conciliado); }
+    .validation-stat.pendente { background: var(--status-pendente-bg); color: var(--status-pendente); }
+    .validation-stat.nao-conciliado { background: var(--status-nao-conciliado-bg); color: var(--status-nao-conciliado); }
+
+    .lancamento-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: var(--transition);
+    }
+    .lancamento-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .lancamento-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+    .lancamento-id {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .lancamento-dados {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .dado-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dado-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .dado-value {
+      font-size: 1rem;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    .dado-value.valor {
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+    }
+    .lancamento-actions {
+      display: flex;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .btn-status {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-status:hover {
+      transform: translateY(-1px);
+    }
+    .btn-status.active {
+      border-color: currentColor;
+      font-weight: 600;
+    }
+    .btn-status.conciliado {
+      background: var(--status-conciliado-bg);
+      color: var(--status-conciliado);
+    }
+    .btn-status.pendente {
+      background: var(--status-pendente-bg);
+      color: var(--status-pendente);
+    }
+    .btn-status.nao-conciliado {
+      background: var(--status-nao-conciliado-bg);
+      color: var(--status-nao-conciliado);
+    }
+
+    .batch-actions {
+      position: sticky;
+      bottom: 24px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 24px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+    }
+    .batch-info {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .batch-info strong {
+      color: var(--text-primary);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+    .empty-state svg {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 24px;
+      opacity: 0.4;
+    }
+    .empty-state h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <h1 class="page-title">Validação de Lançamentos</h1>
+      </div>
+
+      <div class="content-body">
+        <div id="alerts-container"></div>
+
+        <div class="validation-header">
+          <p style="color: var(--text-secondary);">Revise e ajuste o status dos lançamentos processados</p>
+          <div class="validation-stats">
+            <div class="validation-stat conciliado">
+              <span class="badge-dot" style="background: var(--status-conciliado); width: 8px; height: 8px;"></span>
+              <span id="count-conciliados">0</span> Conciliados
+            </div>
+            <div class="validation-stat pendente">
+              <span class="badge-dot" style="background: var(--status-pendente); width: 8px; height: 8px;"></span>
+              <span id="count-pendentes">0</span> Pendentes
+            </div>
+            <div class="validation-stat nao-conciliado">
+              <span class="badge-dot" style="background: var(--status-nao-conciliado); width: 8px; height: 8px;"></span>
+              <span id="count-nao-conciliados">0</span> Não Conciliados
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtro rápido -->
+        <div style="margin-bottom: 24px;">
+          <select class="filter-select" id="filtroRapido" onchange="filtrarPorStatus(this.value)">
+            <option value="">Mostrar todos</option>
+            <option value="pendente">Apenas Pendentes</option>
+            <option value="nao_conciliado">Apenas Não Conciliados</option>
+            <option value="conciliado">Apenas Conciliados</option>
+          </select>
+        </div>
+
+        <!-- Lista de Lançamentos -->
+        <div id="lancamentosList">
+          <div class="empty-state">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <h3>Nenhum lançamento para validar</h3>
+            <p>Faça upload de uma planilha para começar a validação</p>
+            <a href="upload.html" class="btn btn-primary" style="margin-top: 16px;">
+              Ir para Upload
+            </a>
+          </div>
+        </div>
+
+        <!-- Ações em Lote -->
+        <div class="batch-actions" id="batchActions" style="display: none;">
+          <div class="batch-info">
+            <strong id="selectedCount">0</strong> lançamento(s) selecionado(s)
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-success btn-sm" onclick="aplicarEmLote('conciliado')">
+              Marcar como Conciliado
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="aplicarEmLote('pendente')">
+              Marcar como Pendente
+            </button>
+            <button class="btn btn-danger btn-sm" onclick="aplicarEmLote('nao_conciliado')">
+              Marcar como Não Conciliado
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/sidebar.js"></script>
+  <script>
+    // Proteger rota
+    if (!auth.requireAuth()) {
+      throw new Error('Não autenticado');
+    }
+
+    sidebar.init();
+
+    let lancamentos = [];
+    let selectedIds = new Set();
+    let filtroAtual = '';
+
+    async function carregarLancamentos() {
+      try {
+        const response = await api.get(`${CONFIG.ENDPOINTS.LANCAMENTOS}/?per_page=50`);
+        lancamentos = response.items;
+        renderizarLancamentos();
+        atualizarContadores();
+      } catch (error) {
+        ui.showError('Erro ao carregar lançamentos: ' + error.message);
+      }
+    }
+
+    function renderizarLancamentos() {
+      const container = document.getElementById('lancamentosList');
+
+      let filtrados = lancamentos;
+      if (filtroAtual) {
+        filtrados = lancamentos.filter(l => l.status === filtroAtual);
+      }
+
+      if (filtrados.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <h3>Nenhum lançamento encontrado</h3>
+            <p>Tente ajustar os filtros ou faça um novo upload</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtrados.map(l => `
+        <div class="lancamento-card" data-id="${l.id}">
+          <div class="lancamento-header">
+            <div>
+              <div class="lancamento-id">Lançamento #${l.id}</div>
+              <h3 style="margin-top: 4px;">${l.descricao}</h3>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <input type="checkbox" 
+                style="width: 18px; height: 18px; cursor: pointer;"
+                onchange="toggleSelecao(${l.id}, this.checked)"
+                ${selectedIds.has(l.id) ? 'checked' : ''}>
+              ${ui.getStatusBadge(l.status)}
+            </div>
+          </div>
+
+          <div class="lancamento-dados">
+            <div class="dado-item">
+              <span class="dado-label">Data</span>
+              <span class="dado-value">${ui.formatDate(l.data)}</span>
+            </div>
+            <div class="dado-item">
+              <span class="dado-label">Valor</span>
+              <span class="dado-value valor">${ui.formatCurrency(l.valor)}</span>
+            </div>
+            <div class="dado-item">
+              <span class="dado-label">Identificador</span>
+              <span class="dado-value">${l.identificador || '-'}</span>
+            </div>
+            <div class="dado-item">
+              <span class="dado-label">Conta Débito</span>
+              <span class="dado-value">${l.conta_debito || '-'}</span>
+            </div>
+            <div class="dado-item">
+              <span class="dado-label">Conta Crédito</span>
+              <span class="dado-value">${l.conta_credito || '-'}</span>
+            </div>
+            <div class="dado-item">
+              <span class="dado-label">Grupo</span>
+              <span class="dado-value">${l.grupo_id || '-'}</span>
+            </div>
+          </div>
+
+          <div class="lancamento-actions">
+            <button class="btn-status conciliado ${l.status === 'conciliado' ? 'active' : ''}" 
+              onclick="atualizarStatus(${l.id}, 'conciliado')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              Conciliado
+            </button>
+            <button class="btn-status pendente ${l.status === 'pendente' ? 'active' : ''}" 
+              onclick="atualizarStatus(${l.id}, 'pendente')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              Pendente
+            </button>
+            <button class="btn-status nao-conciliado ${l.status === 'nao_conciliado' ? 'active' : ''}" 
+              onclick="atualizarStatus(${l.id}, 'nao_conciliado')">
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+              Não Conciliado
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function atualizarStatus(id, novoStatus) {
+      try {
+        await api.put(`${CONFIG.ENDPOINTS.LANCAMENTOS}/${id}/status`, {
+          status: novoStatus,
+          observacao: 'Status alterado manualmente na validação'
+        });
+
+        // Atualizar localmente
+        const lancamento = lancamentos.find(l => l.id === id);
+        if (lancamento) {
+          lancamento.status = novoStatus;
+        }
+
+        renderizarLancamentos();
+        atualizarContadores();
+        ui.showSuccess('Status atualizado com sucesso!');
+
+      } catch (error) {
+        ui.showError('Erro ao atualizar status: ' + error.message);
+      }
+    }
+
+    function toggleSelecao(id, checked) {
+      if (checked) {
+        selectedIds.add(id);
+      } else {
+        selectedIds.delete(id);
+      }
+      atualizarBatchActions();
+    }
+
+    function atualizarBatchActions() {
+      const batchActions = document.getElementById('batchActions');
+      const selectedCount = document.getElementById('selectedCount');
+
+      if (selectedIds.size > 0) {
+        batchActions.style.display = 'flex';
+        selectedCount.textContent = selectedIds.size;
+      } else {
+        batchActions.style.display = 'none';
+      }
+    }
+
+    async function aplicarEmLote(status) {
+      const ids = Array.from(selectedIds);
+      let sucessos = 0;
+      let erros = 0;
+
+      for (const id of ids) {
+        try {
+          await api.put(`${CONFIG.ENDPOINTS.LANCAMENTOS}/${id}/status`, {
+            status: status,
+            observacao: 'Status alterado em lote'
+          });
+
+          const lancamento = lancamentos.find(l => l.id === id);
+          if (lancamento) {
+            lancamento.status = status;
+          }
+          sucessos++;
+        } catch (error) {
+          erros++;
+        }
+      }
+
+      selectedIds.clear();
+      atualizarBatchActions();
+      renderizarLancamentos();
+      atualizarContadores();
+
+      if (erros === 0) {
+        ui.showSuccess(`${sucessos} lançamento(s) atualizado(s) com sucesso!`);
+      } else {
+        ui.showInfo(`${sucessos} atualizado(s), ${erros} erro(s)`);
+      }
+    }
+
+    function filtrarPorStatus(status) {
+      filtroAtual = status;
+      renderizarLancamentos();
+    }
+
+    function atualizarContadores() {
+      const conciliados = lancamentos.filter(l => l.status === 'conciliado').length;
+      const pendentes = lancamentos.filter(l => l.status === 'pendente').length;
+      const naoConciliados = lancamentos.filter(l => l.status === 'nao_conciliado').length;
+
+      document.getElementById('count-conciliados').textContent = conciliados;
+      document.getElementById('count-pendentes').textContent = pendentes;
+      document.getElementById('count-nao-conciliados').textContent = naoConciliados;
+    }
+
+    // Verificar se veio com ID específico na URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const lancamentoId = urlParams.get('id');
+
+    // Carregar lançamentos
+    carregarLancamentos();
+  </script>
+</body>
+</html>
