@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - ConciliaContábil</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .chart-container {
+      height: 300px;
+      position: relative;
+    }
+    .recent-activity {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    .activity-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .activity-icon.upload { background: var(--primary-light); color: var(--primary); }
+    .activity-icon.process { background: var(--status-pendente-bg); color: var(--status-pendente); }
+    .activity-icon.conciliar { background: var(--status-conciliado-bg); color: var(--status-conciliado); }
+    .activity-details {
+      flex: 1;
+    }
+    .activity-title {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .activity-time {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <h1 class="page-title">Dashboard</h1>
+        <div class="top-bar-actions">
+          <a href="upload.html" class="btn btn-primary">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+            </svg>
+            Novo Upload
+          </a>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <div id="alerts-container"></div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Total de Lançamentos</span>
+              <div class="stat-icon total">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-value" id="stat-total">0</div>
+            <div class="stat-change">lançamentos processados</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Conciliados</span>
+              <div class="stat-icon conciliado">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-value" id="stat-conciliados" style="color: var(--status-conciliado);">0</div>
+            <div class="stat-change" id="pct-conciliados">0% do total</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Não Conciliados</span>
+              <div class="stat-icon nao-conciliado">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-value" id="stat-nao-conciliados" style="color: var(--status-nao-conciliado);">0</div>
+            <div class="stat-change" id="pct-nao-conciliados">0% do total</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Pendentes</span>
+              <div class="stat-icon pendente">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="stat-value" id="stat-pendentes" style="color: var(--status-pendente);">0</div>
+            <div class="stat-change" id="pct-pendentes">0% do total</div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+          <!-- Gráfico -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Evolução dos Lançamentos</h2>
+            </div>
+            <div class="card-body">
+              <div class="chart-container" id="chart-container">
+                <canvas id="evolutionChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Atividade Recente -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Atividade Recente</h2>
+            </div>
+            <div class="card-body">
+              <div class="recent-activity" id="recent-activity">
+                <div class="activity-item">
+                  <div class="activity-icon upload">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                  </div>
+                  <div class="activity-details">
+                    <div class="activity-title">Planilha maio_2026.xlsx enviada</div>
+                    <div class="activity-time">Há 2 horas</div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon process">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                  </div>
+                  <div class="activity-details">
+                    <div class="activity-title">Processamento concluído - 234 lançamentos</div>
+                    <div class="activity-time">Há 1 hora</div>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon conciliar">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                  <div class="activity-details">
+                    <div class="activity-title">189 lançamentos conciliados</div>
+                    <div class="activity-time">Há 1 hora</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/sidebar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Proteger rota
+    if (!auth.requireAuth()) {
+      throw new Error('Não autenticado');
+    }
+
+    // Inicializar sidebar
+    sidebar.init();
+
+    // Carregar estatísticas
+    async function loadStats() {
+      try {
+        const stats = await api.get(CONFIG.ENDPOINTS.DASHBOARD);
+
+        document.getElementById('stat-total').textContent = stats.total_lancamentos.toLocaleString('pt-BR');
+        document.getElementById('stat-conciliados').textContent = stats.conciliados.toLocaleString('pt-BR');
+        document.getElementById('stat-nao-conciliados').textContent = stats.nao_conciliados.toLocaleString('pt-BR');
+        document.getElementById('stat-pendentes').textContent = stats.pendentes.toLocaleString('pt-BR');
+
+        const total = stats.total_lancamentos || 1;
+        document.getElementById('pct-conciliados').textContent = 
+          `${((stats.conciliados / total) * 100).toFixed(1)}% do total`;
+        document.getElementById('pct-nao-conciliados').textContent = 
+          `${((stats.nao_conciliados / total) * 100).toFixed(1)}% do total`;
+        document.getElementById('pct-pendentes').textContent = 
+          `${((stats.pendentes / total) * 100).toFixed(1)}% do total`;
+
+        // Gráfico
+        const ctx = document.getElementById('evolutionChart').getContext('2d');
+        const labels = Object.keys(stats.ultimos_7_dias);
+        const data = Object.values(stats.ultimos_7_dias);
+
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels.map(d => new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })),
+            datasets: [{
+              label: 'Lançamentos Processados',
+              data: data,
+              borderColor: '#2563eb',
+              backgroundColor: 'rgba(37, 99, 235, 0.1)',
+              fill: true,
+              tension: 0.4,
+              pointRadius: 4,
+              pointBackgroundColor: '#2563eb'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                grid: { color: 'rgba(0,0,0,0.05)' }
+              },
+              x: {
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      } catch (error) {
+        ui.showError('Erro ao carregar estatísticas: ' + error.message);
+      }
+    }
+
+    loadStats();
+  </script>
+</body>
+</html>

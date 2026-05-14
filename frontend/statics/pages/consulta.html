@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Lançamentos - ConciliaContábil</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .filters-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      align-items: end;
+      padding: 20px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .filter-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .filter-input,
+    .filter-select {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      background: var(--bg-primary);
+      min-width: 160px;
+    }
+    .filter-input:focus,
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .table-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-icon {
+      padding: 6px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    .btn-icon:hover {
+      background: var(--bg-secondary);
+      color: var(--primary);
+    }
+    .valor-cell {
+      font-weight: 600;
+      font-family: 'Courier New', monospace;
+    }
+    .data-cell {
+      white-space: nowrap;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    .empty-state svg {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <h1 class="page-title">Consulta de Lançamentos</h1>
+        <div class="top-bar-actions">
+          <button class="btn btn-secondary" onclick="exportarCSV()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            Exportar CSV
+          </button>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <div id="alerts-container"></div>
+
+        <!-- Filtros -->
+        <div class="filters-bar">
+          <div class="filter-group">
+            <label>Status</label>
+            <select class="filter-select" id="filterStatus">
+              <option value="">Todos</option>
+              <option value="conciliado">Conciliado</option>
+              <option value="nao_conciliado">Não Conciliado</option>
+              <option value="pendente">Pendente</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Data Início</label>
+            <input type="date" class="filter-input" id="filterDataInicio">
+          </div>
+
+          <div class="filter-group">
+            <label>Data Fim</label>
+            <input type="date" class="filter-input" id="filterDataFim">
+          </div>
+
+          <div class="filter-group">
+            <label>Valor Mínimo</label>
+            <input type="number" class="filter-input" id="filterValorMin" placeholder="0,00" step="0.01">
+          </div>
+
+          <div class="filter-group">
+            <label>Valor Máximo</label>
+            <input type="number" class="filter-input" id="filterValorMax" placeholder="0,00" step="0.01">
+          </div>
+
+          <div class="filter-group">
+            <label>Identificador</label>
+            <input type="text" class="filter-input" id="filterIdentificador" placeholder="Buscar...">
+          </div>
+
+          <button class="btn btn-primary" onclick="aplicarFiltros()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            Filtrar
+          </button>
+
+          <button class="btn btn-secondary" onclick="limparFiltros()">
+            Limpar
+          </button>
+        </div>
+
+        <!-- Tabela -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Lançamentos</h2>
+            <span id="total-registros" style="color: var(--text-muted); font-size: 0.9rem;"></span>
+          </div>
+          <div class="card-body">
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Identificador</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>Processado em</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="lancamentosBody">
+                  <tr>
+                    <td colspan="8">
+                      <div class="empty-state">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <p>Use os filtros acima para buscar lançamentos</p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Paginação -->
+            <div class="pagination" id="pagination">
+              <div class="pagination-info">
+                Mostrando <span id="page-start">0</span> - <span id="page-end">0</span> de <span id="page-total">0</span>
+              </div>
+              <div class="pagination-buttons" id="paginationButtons"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/sidebar.js"></script>
+  <script>
+    // Proteger rota
+    if (!auth.requireAuth()) {
+      throw new Error('Não autenticado');
+    }
+
+    sidebar.init();
+
+    let currentPage = 1;
+    let currentFilters = {};
+
+    async function carregarLancamentos(page = 1, filters = {}) {
+      try {
+        // Construir query params
+        const params = new URLSearchParams();
+        params.append('page', page);
+        params.append('per_page', 20);
+
+        if (filters.status) params.append('status', filters.status);
+        if (filters.data_inicio) params.append('data_inicio', filters.data_inicio);
+        if (filters.data_fim) params.append('data_fim', filters.data_fim);
+        if (filters.valor_minimo) params.append('valor_minimo', filters.valor_minimo);
+        if (filters.valor_maximo) params.append('valor_maximo', filters.valor_maximo);
+        if (filters.identificador) params.append('identificador', filters.identificador);
+
+        const response = await api.get(`${CONFIG.ENDPOINTS.LANCAMENTOS}/?${params.toString()}`);
+
+        renderizarTabela(response.items);
+        renderizarPaginacao(response);
+
+      } catch (error) {
+        ui.showError('Erro ao carregar lançamentos: ' + error.message);
+      }
+    }
+
+    function renderizarTabela(lancamentos) {
+      const tbody = document.getElementById('lancamentosBody');
+
+      if (lancamentos.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8">
+              <div class="empty-state">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                <p>Nenhum lançamento encontrado com os filtros selecionados</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = lancamentos.map(l => `
+        <tr>
+          <td>#${l.id}</td>
+          <td class="data-cell">${ui.formatDate(l.data)}</td>
+          <td>${l.descricao}</td>
+          <td>${l.identificador || '-'}</td>
+          <td class="valor-cell">${ui.formatCurrency(l.valor)}</td>
+          <td>${ui.getStatusBadge(l.status)}</td>
+          <td class="data-cell">${l.processado_em ? ui.formatDateTime(l.processado_em) : '-'}</td>
+          <td>
+            <div class="table-actions">
+              <button class="btn-icon" title="Ver detalhes" onclick="verDetalhes(${l.id})">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+              <button class="btn-icon" title="Editar status" onclick="editarStatus(${l.id}, '${l.status}')">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderizarPaginacao(response) {
+      document.getElementById('page-start').textContent = ((response.page - 1) * response.per_page) + 1;
+      document.getElementById('page-end').textContent = Math.min(response.page * response.per_page, response.total);
+      document.getElementById('page-total').textContent = response.total;
+
+      const buttonsContainer = document.getElementById('paginationButtons');
+      let buttons = '';
+
+      // Botão anterior
+      buttons += `<button class="pagination-btn" onclick="mudarPagina(${response.page - 1})" ${response.page === 1 ? 'disabled' : ''}>←</button>`;
+
+      // Páginas
+      for (let i = 1; i <= response.pages; i++) {
+        if (i === 1 || i === response.pages || (i >= response.page - 1 && i <= response.page + 1)) {
+          buttons += `<button class="pagination-btn ${i === response.page ? 'active' : ''}" onclick="mudarPagina(${i})">${i}</button>`;
+        } else if (i === response.page - 2 || i === response.page + 2) {
+          buttons += `<span style="padding: 6px;">...</span>`;
+        }
+      }
+
+      // Botão próximo
+      buttons += `<button class="pagination-btn" onclick="mudarPagina(${response.page + 1})" ${response.page === response.pages ? 'disabled' : ''}>→</button>`;
+
+      buttonsContainer.innerHTML = buttons;
+    }
+
+    function mudarPagina(page) {
+      currentPage = page;
+      carregarLancamentos(page, currentFilters);
+    }
+
+    function aplicarFiltros() {
+      currentFilters = {
+        status: document.getElementById('filterStatus').value,
+        data_inicio: document.getElementById('filterDataInicio').value,
+        data_fim: document.getElementById('filterDataFim').value,
+        valor_minimo: document.getElementById('filterValorMin').value,
+        valor_maximo: document.getElementById('filterValorMax').value,
+        identificador: document.getElementById('filterIdentificador').value
+      };
+
+      currentPage = 1;
+      carregarLancamentos(1, currentFilters);
+    }
+
+    function limparFiltros() {
+      document.getElementById('filterStatus').value = '';
+      document.getElementById('filterDataInicio').value = '';
+      document.getElementById('filterDataFim').value = '';
+      document.getElementById('filterValorMin').value = '';
+      document.getElementById('filterValorMax').value = '';
+      document.getElementById('filterIdentificador').value = '';
+
+      currentFilters = {};
+      currentPage = 1;
+      carregarLancamentos(1);
+    }
+
+    function verDetalhes(id) {
+      // Implementar modal de detalhes
+      ui.showInfo('Funcionalidade de detalhes em desenvolvimento');
+    }
+
+    function editarStatus(id, statusAtual) {
+      // Redirecionar para página de validação com o ID
+      window.location.href = `validacao.html?id=${id}`;
+    }
+
+    function exportarCSV() {
+      ui.showInfo('Exportação em desenvolvimento');
+    }
+
+    // Carregar ao iniciar
+    carregarLancamentos();
+  </script>
+</body>
+</html>
