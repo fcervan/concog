@@ -34,7 +34,7 @@ async def health_check():
 frontend_path = os.path.join(os.path.dirname(__file__), "../frontend")
 
 # Montar tudo em /static
-app.mount("/static", StaticFiles(directory=frontend_path), name="static")
+app.mount("/statics", StaticFiles(directory=frontend_path), name="statics")
 
 # Raiz serve index.html
 @app.get("/")
