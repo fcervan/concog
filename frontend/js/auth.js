@@ -66,13 +66,13 @@ class AuthManager {
 
   logout() {
     this.clearSession();
-    window.location.href = '/pages/login.html';
+    window.location.href = 'login.html';
   }
 
   // Proteger rotas - redireciona se não autenticado
   requireAuth() {
     if (!this.isAuthenticated()) {
-      window.location.href = '/pages/login.html';
+      window.location.href = 'login.html';
       return false;
     }
     return true;
@@ -81,7 +81,7 @@ class AuthManager {
   // Redireciona se já autenticado (para login/register)
   redirectIfAuth() {
     if (this.isAuthenticated()) {
-      window.location.href = '/pages/dashboard.html';
+      window.location.href = 'dashboard.html';
       return true;
     }
     return false;

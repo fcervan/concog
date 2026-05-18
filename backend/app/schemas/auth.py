@@ -1,17 +1,17 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import datetime
 
 class UsuarioBase(BaseModel):
-    nome: str = Field(..., min_length=2, max_length=100)
-    email: EmailStr
+    nome: str = Field(..., min_length=2, max_length=200)
+    email: str
 
 class UsuarioCreate(UsuarioBase):
-    senha: str = Field(..., min_length=6, max_length=100)
-    confirmar_senha: str = Field(..., min_length=6, max_length=100)
+    senha: str = Field(..., min_length=1, max_length=100)
+    confirmar_senha: str = Field(..., min_length=1, max_length=100)
 
 class UsuarioLogin(BaseModel):
-    email: EmailStr
+    email: str
     senha: str
 
 class UsuarioResponse(UsuarioBase):
@@ -28,8 +28,8 @@ class Token(BaseModel):
     usuario: UsuarioResponse
 
 class RecuperarSenha(BaseModel):
-    email: EmailStr
+    email: str
 
 class RedefinirSenha(BaseModel):
     token: str
-    nova_senha: str = Field(..., min_length=6)
+    nova_senha: str = Field(..., min_length=1)

@@ -1,38 +1,50 @@
 from fastapi import APIRouter, HTTPException, status
-from datetime import timedelta
+from datetime import timedelta, datetime
+import pymysql
 from app.schemas.auth import UsuarioCreate, UsuarioLogin, Token, RecuperarSenha, RedefinirSenha
-from app.security.jwt import get_password_hash, verify_password, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
+from app.security.jwt import create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
 
 router = APIRouter()
 
-# Mock de banco de dados - substituir pelo seu repositório real
-usuarios_db = {}
+DB_CONFIG = {
+    "host": "127.0.0.1",
+    "port": 3307,
+    "user": "root",
+    "password": "123456",
+    "database": "concog",
+    "cursorclass": pymysql.cursors.DictCursor,
+}
+
+def get_db_connection():
+    return pymysql.connect(**DB_CONFIG)
 
 @router.post("/register", response_model=Token)
 async def register(user_data: UsuarioCreate):
-    """Cadastra novo usuário"""
     if user_data.senha != user_data.confirmar_senha:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Senhas não coincidem"
         )
 
-    if user_data.email in usuarios_db:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Email já cadastrado"
-        )
+    conn = get_db_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT usuario_id FROM usuario WHERE login = %s", (user_data.email,))
+            if cursor.fetchone():
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="Login já cadastrado"
+                )
 
-    user_id = len(usuarios_db) + 1
-    hashed_password = get_password_hash(user_data.senha)
-
-    usuarios_db[user_data.email] = {
-        "id": user_id,
-        "nome": user_data.nome,
-        "email": user_data.email,
-        "senha_hash": hashed_password,
-        "ativo": True
-    }
+            data_cad = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            cursor.execute(
+                "INSERT INTO usuario (nome, login, senha, data_cad) VALUES (%s, %s, %s, %s)",
+                (user_data.nome, user_data.email, user_data.senha, data_cad)
+            )
+            conn.commit()
+            user_id = cursor.lastrowid
+    finally:
+        conn.close()
 
     access_token = create_access_token(
         data={"sub": str(user_id), "email": user_data.email},
@@ -47,24 +59,32 @@ async def register(user_data: UsuarioCreate):
             "nome": user_data.nome,
             "email": user_data.email,
             "ativo": True,
-            "criado_em": "2026-05-12T00:00:00"
+            "criado_em": data_cad
         }
     }
 
 @router.post("/login", response_model=Token)
 async def login(credentials: UsuarioLogin):
-    """Autentica usuário e retorna token JWT"""
-    user = usuarios_db.get(credentials.email)
+    conn = get_db_connection()
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "SELECT usuario_id, nome, login, senha, data_cad FROM usuario WHERE login = %s",
+                (credentials.email,)
+            )
+            user = cursor.fetchone()
 
-    if not user or not verify_password(credentials.senha, user["senha_hash"]):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Email ou senha incorretos",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
+        if not user or user["senha"] != credentials.senha:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Login ou senha incorretos",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+    finally:
+        conn.close()
 
     access_token = create_access_token(
-        data={"sub": str(user["id"]), "email": user["email"]},
+        data={"sub": str(user["usuario_id"]), "email": user["login"]},
         expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     )
 
@@ -72,27 +92,18 @@ async def login(credentials: UsuarioLogin):
         "access_token": access_token,
         "token_type": "bearer",
         "usuario": {
-            "id": user["id"],
+            "id": user["usuario_id"],
             "nome": user["nome"],
-            "email": user["email"],
-            "ativo": user["ativo"],
-            "criado_em": "2026-05-12T00:00:00"
+            "email": user["login"],
+            "ativo": True,
+            "criado_em": user["data_cad"].strftime("%Y-%m-%dT%H:%M:%S") if isinstance(user["data_cad"], datetime) else user["data_cad"]
         }
     }
 
 @router.post("/forgot-password")
 async def forgot_password(data: RecuperarSenha):
-    """Solicita recuperação de senha"""
-    user = usuarios_db.get(data.email)
-    if not user:
-        # Não revelar se email existe ou não (segurança)
-        return {"mensagem": "Se o email existir, você receberá instruções"}
-
-    # Aqui você enviaria email com token
-    return {"mensagem": "Se o email existir, você receberá instruções"}
+    return {"mensagem": "Se o login existir, você receberá instruções"}
 
 @router.post("/reset-password")
 async def reset_password(data: RedefinirSenha):
-    """Redefine senha com token"""
-    # Validar token e atualizar senha
     return {"mensagem": "Senha redefinida com sucesso"}
