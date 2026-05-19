@@ -1,4 +1,4 @@
-# ConciliaContábil - Sistema Web
+# ConCog - Contabilidade Cognitiva - Sistema Web
 
 Sistema completo de conciliação contábil com frontend e backend.
 
