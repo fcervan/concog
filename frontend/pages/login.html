@@ -158,10 +158,10 @@
     </div>
   </div>
 
-  <script src="../js/config.js"></script>
-  <script src="../js/api.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/ui.js"></script>
+  <script src="../js/config.js?v=3"></script>
+  <script src="../js/api.js?v=3"></script>
+  <script src="../js/auth.js?v=3"></script>
+  <script src="../js/ui.js?v=3"></script>
   <script>
     // Redirecionar se já estiver logado
     if (auth.isAuthenticated()) {
@@ -184,7 +184,11 @@
       if (result.success) {
         ui.showSuccess('Login realizado com sucesso!');
         setTimeout(() => {
-          window.location.href = 'dashboard.html';
+          if (result.precisaConfigurar) {
+            window.location.href = 'config.html';
+          } else {
+            window.location.href = 'dashboard.html';
+          }
         }, 800);
       } else {
         ui.showError(result.error || 'Erro ao fazer login');

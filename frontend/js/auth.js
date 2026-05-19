@@ -34,7 +34,15 @@ class AuthManager {
     try {
       const response = await api.post(CONFIG.ENDPOINTS.LOGIN, { email, senha }, false);
       this.setSession(response.access_token, response.usuario);
-      return { success: true, user: response.usuario };
+      if (response.sessao) {
+        localStorage.setItem('cc_sessao', JSON.stringify(response.sessao));
+      }
+      return {
+        success: true,
+        user: response.usuario,
+        precisaConfigurar: response.precisa_configurar,
+        sessao: response.sessao
+      };
     } catch (error) {
       return { success: false, error: error.message };
     }
@@ -49,7 +57,11 @@ class AuthManager {
         confirmar_senha: confirmarSenha
       }, false);
       this.setSession(response.access_token, response.usuario);
-      return { success: true, user: response.usuario };
+      return {
+        success: true,
+        user: response.usuario,
+        precisaConfigurar: true
+      };
     } catch (error) {
       return { success: false, error: error.message };
     }
@@ -73,6 +85,24 @@ class AuthManager {
   requireAuth() {
     if (!this.isAuthenticated()) {
       window.location.href = 'login.html';
+      return false;
+    }
+    return true;
+  }
+
+  // Verifica se parser está configurado
+  hasParserConfig() {
+    return !!localStorage.getItem('cc_sessao');
+  }
+
+  // Proteger rotas que precisam de parser configurado
+  requireParserConfig() {
+    if (!this.isAuthenticated()) {
+      window.location.href = 'login.html';
+      return false;
+    }
+    if (!this.hasParserConfig()) {
+      window.location.href = 'config.html';
       return false;
     }
     return true;

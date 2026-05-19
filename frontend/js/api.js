@@ -43,11 +43,14 @@ class APIClient {
       const response = await fetch(url, config);
 
       if (response.status === 401) {
-        // Token expirado ou inválido
-        localStorage.removeItem(CONFIG.TOKEN_KEY);
-        localStorage.removeItem(CONFIG.USER_KEY);
-        window.location.href = '/pages/login.html';
-        return;
+        const isAuthEndpoint = endpoint.startsWith('/auth/');
+        if (!isAuthEndpoint) {
+          localStorage.removeItem(CONFIG.TOKEN_KEY);
+          localStorage.removeItem(CONFIG.USER_KEY);
+          window.location.href = 'login.html';
+        }
+        const error = await response.json().catch(() => ({ detail: 'Não autorizado' }));
+        throw new Error(error.detail || `HTTP ${response.status}`);
       }
 
       if (!response.ok) {

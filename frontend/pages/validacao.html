@@ -229,14 +229,14 @@
     </main>
   </div>
 
-  <script src="../js/config.js"></script>
-  <script src="../js/api.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/ui.js"></script>
-  <script src="../js/sidebar.js"></script>
+  <script src="../js/config.js?v=3"></script>
+  <script src="../js/api.js?v=3"></script>
+  <script src="../js/auth.js?v=3"></script>
+  <script src="../js/ui.js?v=3"></script>
+  <script src="../js/sidebar.js?v=3"></script>
   <script>
     // Proteger rota
-    if (!auth.requireAuth()) {
+    if (!auth.requireParserConfig()) {
       throw new Error('Não autenticado');
     }
 

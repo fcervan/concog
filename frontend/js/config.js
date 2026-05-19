@@ -13,6 +13,8 @@ const CONFIG = {
     REGISTER: '/auth/register',
     FORGOT_PASSWORD: '/auth/forgot-password',
     RESET_PASSWORD: '/auth/reset-password',
+    CONFIGURAR_PARSER: '/auth/configurar-parser',
+    PARSERS_DISPONIVEIS: '/auth/parsers-disponiveis',
     UPLOAD: '/api/upload',
     UPLOAD_HISTORY: '/api/upload/history',
     LANCAMENTOS: '/api/lancamentos',
