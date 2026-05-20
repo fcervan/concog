@@ -6,6 +6,7 @@ from datetime import datetime
 from app.schemas.upload import UploadResponse, UploadHistory
 from app.security.jwt import get_current_user
 from app.core.storage.s3_client import storage
+from app.core.queue.queue_sender import queue_sender
 
 router = APIRouter()
 
@@ -35,6 +36,8 @@ async def upload_planilha(
             usuario_id=current_user["id"],
             filename=file.filename
         )
+
+        queue_sender.send_splitar_lancamento(s3_path)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
