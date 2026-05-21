@@ -14,6 +14,9 @@ from backend.app.modules.conciliacao_contabil.services.lancamento_service import
 from backend.app.core.database.unit_of_work import UnitOfWork
 from backend.app.utils.datetime_utils import now_sp_str
 from backend.app.jobs.processar_lancamento_job import processar_lancamento_job
+from backend.app.core.logging.loki_handler import setup_loki_logger
+
+logger = setup_loki_logger("splitar-lancamento-service", extra_labels={"component": "service"})
 
 
 class SplitarLancamentoService:
@@ -137,9 +140,7 @@ class SplitarLancamentoService:
                 )
             )
 
-            print({
-                "lancamento_arquivo_id": lancamento_arquivo_id
-            })
+            logger.info(f"Lancamento arquivo inserido: {lancamento_arquivo_id}")
 
             for payload_empresa in resultado:
                 chave_agrupador = uuid.uuid4()
@@ -158,8 +159,7 @@ class SplitarLancamentoService:
 
                 self.enviar_mensagem_fila(mensagem)
 
-                print(mensagem)
-                print("-" * 10)
+                logger.info(f"Enviado para fila: {mensagem}")
 
         return {
             "statusCode": 200,

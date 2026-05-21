@@ -69,6 +69,60 @@ services:
       - redis
       - mysql
 
+  cc_splitar_lancamento_worker:
+    build: .
+    command: rq worker cc-splitar-lancamento --url redis://redis:6379
+    environment:
+      ENV: local
+      REDIS_URL: redis://redis:6379
+      MINIO_ENDPOINT: http://minio:9000
+      MINIO_ACCESS_KEY: admin
+      MINIO_SECRET_KEY: password
+      DB_HOST: mysql-concog
+      DB_PORT: 3306
+      DB_NAME: concog
+      DB_USER: root
+      DB_PASSWORD: 123456
+    depends_on:
+      - redis
+      - mysql
+
+  loki:
+    image: grafana/loki:3.0.0
+    container_name: loki-concog
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - loki_data:/loki
+
+  grafana:
+    image: grafana/grafana:11.0.0
+    container_name: grafana-concog
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./infra/grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - loki
+
+  alloy:
+    image: grafana/alloy:latest
+    container_name: alloy-concog
+    volumes:
+      - ./infra/alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
+    ports:
+      - "12345:12345"
+    depends_on:
+      - loki
+
 networks:
   default:
     name: concog_default
@@ -80,3 +134,5 @@ networks:
 volumes:
   mysql_data:
   minio_data:
+  loki_data:
+  grafana_data:

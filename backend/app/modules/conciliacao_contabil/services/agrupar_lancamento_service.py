@@ -1,5 +1,8 @@
 import json
 import spacy
+from backend.app.core.logging.loki_handler import setup_loki_logger
+
+logger = setup_loki_logger("agrupar-lancamento", extra_labels={"component": "service"})
 
 
 class AgruparLancamentoService:
@@ -25,7 +28,7 @@ class AgruparLancamentoService:
                 # Adiciona o histórico ao grupo do identificador
                 resultado[id_encontrado].append(lancamento)
             else:
-                print(f"⚠️ - Identificador não encontrado para o lançamento: {historico}")
+                logger.warning(f"Identificador não encontrado para o lançamento: {historico}")
 
         return resultado
 

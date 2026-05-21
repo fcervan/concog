@@ -6,6 +6,9 @@ from backend.app.modules.conciliacao_contabil.services.definir_status_lancamento
 from backend.app.modules.conciliacao_contabil.repositories.lancamento_repository import LancamentoRepository
 from backend.app.modules.conciliacao_contabil.services.lancamento_processado_llm_service import LancamentoProcessadoLlmService
 from backend.app.core.database.unit_of_work import UnitOfWork
+from backend.app.core.logging.loki_handler import setup_loki_logger
+
+logger = setup_loki_logger("classificar-lancamento", extra_labels={"component": "service"})
 
 
 class ClassificarLancamentoService:
@@ -23,21 +26,25 @@ class ClassificarLancamentoService:
                     lancamento_processamento_llm_service = LancamentoProcessadoLlmService(uow)
 
                     mensagem_lancamento = json.loads(mensagem['body'])
-                    print("Mensagem recebida:", mensagem_lancamento)
+                    logger.info(f"Mensagem recebida - lancamento_id: {mensagem_lancamento['lancamento_id']}")
 
                     lancamentos = lancamento_repository.listar_lancamento_sem_processamento(
                         mensagem_lancamento['lancamento_id']
                     )
 
+                    logger.debug(f"Lancamentos recuperados do banco: {len(lancamentos.get('lancamento_dados', {}).get('lancamentos', []))}")
+
                     lancamento_agrupado = self.agrupar_lancamento_service.agrupar(
                         lancamentos["lancamento_dados"]
                     )
+
+                    logger.debug(f"Lancamentos agrupados em {len(lancamento_agrupado)} grupos")
 
                     lancamento_definido = self.definir_status_lancamento.definir(
                         lancamento_agrupado
                     )
 
-                    print(json.dumps(lancamento_definido, indent=4))
+                    logger.info(f"Status definido para {len(lancamento_definido)} grupos")
 
                     data_cad = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
@@ -51,11 +58,9 @@ class ClassificarLancamentoService:
 
                     lancamento_repository.atualizar_data_llm(mensagem_lancamento['lancamento_id'], data_cad)
 
+                    logger.info(f"Lancamento {mensagem_lancamento['lancamento_id']} processado e salvo com sucesso")
+
             except Exception as e:
-                print(f"Erro ao processar mensagem {mensagem}: {e}")
-                # aqui você pode:
-                # - logar
-                # - mandar pra DLQ
-                # - ou só seguir
+                logger.error(f"Erro ao processar mensagem: {e}", exc_info=True)
 
         return {'statusCode': 200, 'success': True}

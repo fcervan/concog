@@ -3,14 +3,18 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import os
+import logging
 
 from app.api import auth, upload, lancamentos, dashboard
+from app.core.logging.loki_handler import setup_loki_logger
 
 app = FastAPI(
     title="Conciliação Contábil API",
     description="API para conciliação de lançamentos contábeis",
     version="1.0.0"
 )
+
+logger = setup_loki_logger("concog-api", extra_labels={"component": "web"})
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,6 +23,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")
+async def startup_event():
+    logger.info("API iniciada")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    logger.info("API encerrada")
 
 # === ROTAS DA API ===
 app.include_router(auth.router, prefix="/auth", tags=["Autenticação"])
