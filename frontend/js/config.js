@@ -3,7 +3,7 @@
 // ============================================
 
 const CONFIG = {
-  API_BASE_URL: 'http://localhost:8001',
+  API_BASE_URL: 'http://localhost:8000',
   TOKEN_KEY: 'cc_token',
   USER_KEY: 'cc_user',
 

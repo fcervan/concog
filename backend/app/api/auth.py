@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 from datetime import timedelta, datetime
 import pymysql
+import os
 from app.schemas.auth import UsuarioCreate, UsuarioLogin, Token, RecuperarSenha, RedefinirSenha
 from app.security.jwt import create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
 from jose import jwt
@@ -9,11 +10,11 @@ from pydantic import BaseModel
 router = APIRouter()
 
 DB_CONFIG = {
-    "host": "127.0.0.1",
-    "port": 3307,
-    "user": "root",
-    "password": "123456",
-    "database": "concog",
+    "host": os.getenv("DB_HOST", "127.0.0.1"),
+    "port": int(os.getenv("DB_PORT", "3307")),
+    "user": os.getenv("DB_USER", "root"),
+    "password": os.getenv("DB_PASSWORD", "123456"),
+    "database": os.getenv("DB_NAME", "concog"),
     "cursorclass": pymysql.cursors.DictCursor,
 }
 
