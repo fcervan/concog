@@ -69,24 +69,6 @@ services:
       - redis
       - mysql
 
-  cc_splitar_lancamento_worker:
-    build: .
-    command: rq worker cc-splitar-lancamento --url redis://redis:6379
-    environment:
-      ENV: local
-      REDIS_URL: redis://redis:6379
-      MINIO_ENDPOINT: http://minio:9000
-      MINIO_ACCESS_KEY: admin
-      MINIO_SECRET_KEY: password
-      DB_HOST: mysql-concog
-      DB_PORT: 3306
-      DB_NAME: concog
-      DB_USER: root
-      DB_PASSWORD: 123456
-    depends_on:
-      - redis
-      - mysql
-
   loki:
     image: grafana/loki:3.0.0
     container_name: loki-concog
