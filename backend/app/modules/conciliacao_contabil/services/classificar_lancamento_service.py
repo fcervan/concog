@@ -32,7 +32,7 @@ class ClassificarLancamentoService:
                         mensagem_lancamento['lancamento_id']
                     )
 
-                    logger.debug(f"Lancamentos recuperados do banco: {len(lancamentos.get('lancamento_dados', {}).get('lancamentos', []))}")
+                    logger.debug(f"Lancamentos recuperados do banco para lancamento_id: {mensagem_lancamento['lancamento_id']}")
 
                     lancamento_agrupado = self.agrupar_lancamento_service.agrupar(
                         lancamentos["lancamento_dados"]
