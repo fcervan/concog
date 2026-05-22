@@ -4,7 +4,7 @@ from datetime import datetime
 from backend.app.modules.conciliacao_contabil.services.agrupar_lancamento_service import AgruparLancamentoService
 from backend.app.modules.conciliacao_contabil.services.definir_status_lancamento import DefinirStatusLancamento
 from backend.app.modules.conciliacao_contabil.repositories.lancamento_repository import LancamentoRepository
-from backend.app.modules.conciliacao_contabil.services.lancamento_processado_llm_service import LancamentoProcessadoLlmService
+from backend.app.modules.conciliacao_contabil.services.lancamento_processado_service import LancamentoProcessadoService
 from backend.app.core.database.unit_of_work import UnitOfWork
 from backend.app.core.logging.loki_handler import setup_loki_logger
 
@@ -23,7 +23,7 @@ class ClassificarLancamentoService:
             try:
                 with UnitOfWork() as uow:
                     lancamento_repository = LancamentoRepository(uow)
-                    lancamento_processamento_llm_service = LancamentoProcessadoLlmService(uow)
+                    lancamento_processado_service = LancamentoProcessadoService(uow)
 
                     mensagem_lancamento = json.loads(mensagem['body'])
                     logger.info(f"Mensagem recebida - lancamento_id: {mensagem_lancamento['lancamento_id']}")
@@ -48,7 +48,7 @@ class ClassificarLancamentoService:
 
                     data_cad = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-                    lancamento_processamento_llm_service.inserir(
+                    lancamento_processado_service.inserir(
                         mensagem_lancamento['lancamento_arquivo_id'],
                         mensagem_lancamento['lancamento_id'],
                         'spacy',
