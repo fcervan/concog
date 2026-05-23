@@ -5,8 +5,8 @@ from datetime import datetime
 
 from backend.app.core.ai.llm.llm_factory import get_llm
 from backend.app.core.ai.prompts.prompt_loader import load_prompt
-from backend.app.modules.conciliacao_contabil.services.lancamento_service import LancamentoService
-from backend.app.modules.conciliacao_contabil.services.lancamento_processado_service import LancamentoProcessadoService
+from backend.app.modules.conciliacao_contabil.repositories.lancamento_repository import LancamentoRepository
+from backend.app.modules.conciliacao_contabil.repositories.lancamento_processado_repository import LancamentoProcessadoRepository
 from backend.app.core.database.unit_of_work import UnitOfWork
 from backend.app.utils.datetime_utils import now_sp_str, diff_seconds
 from backend.app.core.config.settings import LLM_PROVIDER, GROQ_MODEL
@@ -28,8 +28,8 @@ class ProcessarLancamentoService:
     def classificar(self, event):
         try:
             with UnitOfWork() as uow:
-                self.lancamento = LancamentoService(uow)
-                self.lancamento_processado = LancamentoProcessadoService(uow)
+                self.lancamento_repo = LancamentoRepository(uow)
+                self.lancamento_processado_repo = LancamentoProcessadoRepository(uow)
                 for mensagem in event["Records"]:
                     data_cad = now_sp_str()
 
@@ -38,7 +38,7 @@ class ProcessarLancamentoService:
                     print("Mensagem recebida:", mensagem_lancamento)
 
                     # Obtém o JSON do banco
-                    lancamento = self.lancamento.listar_lancamento_sem_processamento_llm(
+                    lancamento = self.lancamento_repo.listar_lancamento_sem_processamento(
                         mensagem_lancamento['lancamento_id']
                     )
 
@@ -121,7 +121,7 @@ class ProcessarLancamentoService:
                     #     'success': True,
                     # }
                     for classificado in classificados['grupos']:
-                        self.lancamento_processado.inserir(
+                        self.lancamento_processado_repo.inserir(
                             mensagem_lancamento['lancamento_arquivo_id'],
                             mensagem_lancamento['lancamento_id'],
                             LLM_PROVIDER,

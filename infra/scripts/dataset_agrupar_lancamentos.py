@@ -1,6 +1,5 @@
-from backend.app.modules.conciliacao_contabil.services.processar_lancamento_service import ProcessarLancamentoService
-from backend.app.modules.conciliacao_contabil.services.lancamento_service import LancamentoService
-from backend.app.modules.conciliacao_contabil.services.lancamento_processado_service import LancamentoProcessadoService
+from backend.app.modules.conciliacao_contabil.repositories.lancamento_repository import LancamentoRepository
+from backend.app.modules.conciliacao_contabil.repositories.lancamento_processado_repository import LancamentoProcessadoRepository
 from backend.app.core.database.unit_of_work import UnitOfWork
 from datetime import datetime
 import time
@@ -31,12 +30,12 @@ def mensagem_sqs(lancamento_id):
 
 if __name__ == "__main__":
     with UnitOfWork() as uow:
-        lancamento_processado_service = LancamentoProcessadoService(uow)
-        lancamento_service = LancamentoService(uow)
+        lancamento_processado_repo = LancamentoProcessadoRepository(uow)
+        lancamento_repo = LancamentoRepository(uow)
 
         # for lancamento_id in range(1,323):
         for lancamento_id in range(1,116):
-            lancamento_dados = lancamento_service.listar_lancamento_sem_processamento_llm(lancamento_id)
+            lancamento_dados = lancamento_repo.listar_lancamento_sem_processamento(lancamento_id)
             lancamentos = json.loads(lancamento_dados["lancamento_dados"])
 
             total_lancamentos = len(lancamentos["lancamentos"])
@@ -44,7 +43,7 @@ if __name__ == "__main__":
 
 
             for lancamento in lancamentos["lancamentos"]:
-                lancamento_processado = lancamento_processado_service.listar_vw_lancamento_processado_historico(
+                lancamento_processado = lancamento_processado_repo.listar_vw_lancamento_processado_historico(
                     lancamento["historico"]
                 )
                 if lancamento_processado:

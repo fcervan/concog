@@ -1,5 +1,5 @@
 import json
-from backend.app.modules.conciliacao_contabil.services.lancamento_processado_service import LancamentoProcessadoService
+from backend.app.modules.conciliacao_contabil.repositories.lancamento_processado_repository import LancamentoProcessadoRepository
 from backend.app.core.database.unit_of_work import UnitOfWork
 HTML_TEMPLATE = """
 <!DOCTYPE html>
@@ -78,10 +78,10 @@ def lista_lancamento_id_processado():
         86,89,90,92,93,94,96,97,100,101,102,103,105,107,108,110,111,113,114,115
     ]
 with UnitOfWork() as uow:
-    lancamento_processado = LancamentoProcessadoService(uow)
+    lancamento_processado_repo = LancamentoProcessadoRepository(uow)
 
     for item_lancamento_id in lista_lancamento_id_processado():
-        grupo_lancamentos = lancamento_processado.listar_por_lancamento_arquivo_id_ordenado(2, item_lancamento_id)
+        grupo_lancamentos = lancamento_processado_repo.listar_por_lancamento_arquivo_id_ordenado(2, item_lancamento_id)
 
         linhas_html = ''
         total_itens = len(grupo_lancamentos)

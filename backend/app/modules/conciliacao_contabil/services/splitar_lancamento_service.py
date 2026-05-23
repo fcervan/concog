@@ -8,9 +8,9 @@ from redis import Redis
 from rq import Queue
 
 from backend.app.modules.conciliacao_contabil.parsers.parser_factory import ParserFactory
-from backend.app.modules.conciliacao_contabil.services.cliente_service import ClienteService
-from backend.app.modules.conciliacao_contabil.services.lancamento_arquivo_service import LancamentoArquivoService
-from backend.app.modules.conciliacao_contabil.services.lancamento_service import LancamentoService
+from backend.app.modules.conciliacao_contabil.repositories.cliente_repository import ClienteRepository
+from backend.app.modules.conciliacao_contabil.repositories.lancamento_arquivo_repository import LancamentoArquivoRepository
+from backend.app.modules.conciliacao_contabil.repositories.lancamento_repository import LancamentoRepository
 from backend.app.core.database.unit_of_work import UnitOfWork
 from backend.app.utils.datetime_utils import now_sp_str
 from backend.app.jobs.processar_lancamento_job import processar_lancamento_job
@@ -96,9 +96,9 @@ class SplitarLancamentoService:
 
     def processar(self, event):
         with UnitOfWork() as uow:
-            self.cliente = ClienteService(uow)
-            self.lancamento_arquivo = LancamentoArquivoService(uow)
-            self.lancamento = LancamentoService(uow)
+            self.cliente_repo = ClienteRepository(uow)
+            self.lancamento_arquivo_repo = LancamentoArquivoRepository(uow)
+            self.lancamento_repo = LancamentoRepository(uow)
 
             data_cad = now_sp_str()
 
@@ -113,7 +113,7 @@ class SplitarLancamentoService:
                 self.extrair_ids_do_path_s3(caminho_arquivo)
             )
 
-            nome_parser = self.cliente.get_parser(
+            nome_parser = self.cliente_repo.get_parser(
                 cliente_id,
                 arquivo_parser_id
             )
@@ -132,7 +132,7 @@ class SplitarLancamentoService:
             resultado = parser.parse(arquivo_bytes)
 
             lancamento_arquivo_id = (
-                self.lancamento_arquivo.inserir(
+                self.lancamento_arquivo_repo.inserir(
                     cliente_id,
                     usuario_id,
                     caminho_arquivo,
@@ -145,7 +145,7 @@ class SplitarLancamentoService:
             for payload_empresa in resultado:
                 chave_agrupador = uuid.uuid4()
 
-                lancamento_id = self.lancamento.inserir(
+                lancamento_id = self.lancamento_repo.inserir(
                     lancamento_arquivo_id,
                     payload_empresa,
                     chave_agrupador.hex,
