@@ -5,7 +5,7 @@ from fastapi.responses import FileResponse
 import os
 import logging
 
-from app.api import auth, upload, lancamentos, dashboard
+from app.api import auth, upload, lancamentos, dashboard, historico_uploads
 from app.core.logging.loki_handler import setup_loki_logger
 
 app = FastAPI(
@@ -37,6 +37,7 @@ app.include_router(auth.router, prefix="/auth", tags=["Autenticação"])
 app.include_router(upload.router, prefix="/api", tags=["Upload"])
 app.include_router(lancamentos.router, prefix="/api/lancamentos", tags=["Lançamentos"])
 app.include_router(dashboard.router, prefix="/api/dashboard", tags=["Dashboard"])
+app.include_router(historico_uploads.router, prefix="/api", tags=["Histórico de Uploads"])
 
 @app.get("/health")
 async def health_check():

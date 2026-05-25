@@ -94,77 +94,176 @@ class SplitarLancamentoService:
             region_name=os.getenv("AWS_DEFAULT_REGION", "us-east-1")
         )
 
+    def _validar_payload(self, payload: str, grupo_index: int):
+        erros = []
+        dados = json.loads(payload)
+        lancamentos = dados.get("lancamentos", [])
+
+        if not lancamentos:
+            erros.append(
+                f"Grupo {grupo_index + 1}: lista de lançamentos vazia"
+            )
+            return erros
+
+        for i, lanc in enumerate(lancamentos):
+            if "historico" not in lanc:
+                erros.append(
+                    f"Grupo {grupo_index + 1}, lançamento {i + 1}: campo 'historico' ausente. "
+                    f"Chaves encontradas: {list(lanc.keys())}"
+                )
+
+        return erros
+
+    def _validar_resultados(self, resultados):
+        erros = []
+
+        for i, payload in enumerate(resultados):
+            erros.extend(self._validar_payload(payload, i))
+
+        if erros:
+            for erro in erros:
+                log_data = json.dumps({
+                    "evento": "validacao",
+                    "status": "erro",
+                    "cliente_id": self.cliente_id,
+                    "arquivo": self.arquivo_nome,
+                    "erro": erro
+                })
+                logger.error(log_data, extra={"loki_labels": {"cliente_id": str(self.cliente_id)}})
+            raise ValueError("\n".join(erros))
+
     def processar(self, event):
-        with UnitOfWork() as uow:
-            self.cliente_repo = ClienteRepository(uow)
-            self.lancamento_arquivo_repo = LancamentoArquivoRepository(uow)
-            self.lancamento_repo = LancamentoRepository(uow)
+        try:
+            with UnitOfWork() as uow:
+                self.cliente_repo = ClienteRepository(uow)
+                self.lancamento_arquivo_repo = LancamentoArquivoRepository(uow)
+                self.lancamento_repo = LancamentoRepository(uow)
 
-            data_cad = now_sp_str()
+                data_cad = now_sp_str()
 
-            record = event["Records"][0]
+                record = event["Records"][0]
 
-            bucket = record["s3"]["bucket"]["name"]
-            caminho_arquivo = unquote(
-                record["s3"]["object"]["key"]
-            )
-
-            cliente_id, arquivo_parser_id, usuario_id = (
-                self.extrair_ids_do_path_s3(caminho_arquivo)
-            )
-
-            nome_parser = self.cliente_repo.get_parser(
-                cliente_id,
-                arquivo_parser_id
-            )
-
-            parser = ParserFactory.get_parser(
-                nome_parser["nome_parser"]
-            )
-
-            response = self.s3.get_object(
-                Bucket=bucket,
-                Key=caminho_arquivo
-            )
-
-            arquivo_bytes = response["Body"].read()
-
-            resultado = parser.parse(arquivo_bytes)
-
-            lancamento_arquivo_id = (
-                self.lancamento_arquivo_repo.inserir(
-                    cliente_id,
-                    usuario_id,
-                    caminho_arquivo,
-                    data_cad
-                )
-            )
-
-            logger.info(f"Lancamento arquivo inserido: {lancamento_arquivo_id}")
-
-            for payload_empresa in resultado:
-                chave_agrupador = uuid.uuid4()
-
-                lancamento_id = self.lancamento_repo.inserir(
-                    lancamento_arquivo_id,
-                    payload_empresa,
-                    chave_agrupador.hex,
-                    data_cad
+                bucket = record["s3"]["bucket"]["name"]
+                caminho_arquivo = unquote(
+                    record["s3"]["object"]["key"]
                 )
 
-                mensagem = {
-                    "lancamento_arquivo_id": lancamento_arquivo_id,
-                    "lancamento_id": lancamento_id
-                }
+                self.cliente_id, arquivo_parser_id, usuario_id = (
+                    self.extrair_ids_do_path_s3(caminho_arquivo)
+                )
 
-                self.enviar_mensagem_fila(mensagem)
+                self.arquivo_nome = caminho_arquivo.split("/")[-1]
 
-                logger.info(f"Enviado para fila: {mensagem}")
+                log_labels = {"loki_labels": {"cliente_id": str(self.cliente_id)}}
 
-        return {
-            "statusCode": 200,
-            "success": True,
-        }
+                log_data = json.dumps({
+                    "evento": "inicio_processo",
+                    "status": "processando",
+                    "cliente_id": self.cliente_id,
+                    "arquivo": self.arquivo_nome
+                })
+                logger.info(log_data, extra=log_labels)
+
+                nome_parser = self.cliente_repo.get_parser(
+                    self.cliente_id,
+                    arquivo_parser_id
+                )
+
+                parser = ParserFactory.get_parser(
+                    nome_parser["nome_parser"]
+                )
+
+                response = self.s3.get_object(
+                    Bucket=bucket,
+                    Key=caminho_arquivo
+                )
+
+                arquivo_bytes = response["Body"].read()
+
+                resultado = parser.parse(arquivo_bytes)
+
+                if not resultado:
+                    log_data = json.dumps({
+                        "evento": "validacao",
+                        "status": "erro",
+                        "cliente_id": self.cliente_id,
+                        "arquivo": self.arquivo_nome,
+                        "erro": "Nenhum grupo de lançamentos foi encontrado no arquivo"
+                    })
+                    logger.error(log_data, extra=log_labels)
+                    raise ValueError("Nenhum grupo de lançamentos foi encontrado no arquivo")
+
+                self._validar_resultados(resultado)
+
+                log_data = json.dumps({
+                    "evento": "validacao",
+                    "status": "sucesso",
+                    "cliente_id": self.cliente_id,
+                    "arquivo": self.arquivo_nome,
+                    "grupos": len(resultado)
+                })
+                logger.info(log_data, extra=log_labels)
+
+                lancamento_arquivo_id = (
+                    self.lancamento_arquivo_repo.inserir(
+                        self.cliente_id,
+                        usuario_id,
+                        caminho_arquivo,
+                        data_cad
+                    )
+                )
+
+                log_data = json.dumps({
+                    "evento": "insert_arquivo",
+                    "status": "sucesso",
+                    "cliente_id": self.cliente_id,
+                    "arquivo": self.arquivo_nome,
+                    "lancamento_arquivo_id": lancamento_arquivo_id
+                })
+                logger.info(log_data, extra=log_labels)
+
+                for payload_empresa in resultado:
+                    chave_agrupador = uuid.uuid4()
+
+                    lancamento_id = self.lancamento_repo.inserir(
+                        lancamento_arquivo_id,
+                        payload_empresa,
+                        chave_agrupador.hex,
+                        data_cad
+                    )
+
+                    mensagem = {
+                        "lancamento_arquivo_id": lancamento_arquivo_id,
+                        "lancamento_id": lancamento_id
+                    }
+
+                    self.enviar_mensagem_fila(mensagem)
+
+                log_data = json.dumps({
+                    "evento": "fim_processo",
+                    "status": "sucesso",
+                    "cliente_id": self.cliente_id,
+                    "arquivo": self.arquivo_nome,
+                    "grupos": len(resultado),
+                    "lancamento_arquivo_id": lancamento_arquivo_id
+                })
+                logger.info(log_data, extra=log_labels)
+
+            return {
+                "statusCode": 200,
+                "success": True,
+            }
+
+        except Exception as e:
+            log_data = json.dumps({
+                "evento": "erro_processo",
+                "status": "erro",
+                "cliente_id": getattr(self, "cliente_id", None),
+                "arquivo": getattr(self, "arquivo_nome", None),
+                "erro": str(e)
+            })
+            logger.error(log_data, extra={"loki_labels": {"cliente_id": str(getattr(self, "cliente_id", ""))}})
+            raise
 
     def extrair_ids_do_path_s3(self, key: str):
         partes = key.split("/")

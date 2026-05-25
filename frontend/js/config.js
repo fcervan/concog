@@ -17,6 +17,7 @@ const CONFIG = {
     PARSERS_DISPONIVEIS: '/auth/parsers-disponiveis',
     UPLOAD: '/api/upload',
     UPLOAD_HISTORY: '/api/upload/history',
+    HISTORICO_UPLOADS: '/api/historico-uploads',
     LANCAMENTOS: '/api/lancamentos',
     DASHBOARD: '/api/dashboard/stats'
   }

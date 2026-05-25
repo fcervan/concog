@@ -59,6 +59,8 @@ services:
     build: .
     container_name: worker-splitar-concog
     command: rq worker cc-splitar-lancamento --url redis://redis:6379
+    volumes:
+      - .:/app
     environment:
       ENV: local
       PYTHONPATH: /app/backend
@@ -81,6 +83,8 @@ services:
     build: .
     container_name: worker-processar-concog
     command: rq worker cc-processar-lancamento --url redis://redis:6379
+    volumes:
+      - .:/app
     environment:
       ENV: local
       PYTHONPATH: /app/backend

@@ -33,10 +33,10 @@ class SidebarManager {
               Dashboard
             </a>
             <a href="upload.html" class="nav-item ${this.isActive('upload.html')}">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
-              </svg>
-              Upload de Planilha
+              <!-- SVG --> Upload de Planilha
+            </a>
+            <a href="historico-uploads.html" class="nav-item ${this.isActive('historico-uploads.html')}">
+              <!-- SVG --> Histórico de Uploads
             </a>
             <a href="consulta.html" class="nav-item ${this.isActive('consulta.html')}">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">

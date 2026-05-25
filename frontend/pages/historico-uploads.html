@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico de Uploads - ConCog</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .status-sucesso { color: var(--status-conciliado); font-weight: 600; }
+    .status-erro { color: var(--status-nao-conciliado); font-weight: 600; }
+    .status-desconhecido { color: var(--text-muted); }
+    .btn-sm {
+      padding: 4px 12px;
+      font-size: 0.85rem;
+    }
+    .detalhes-cell {
+      max-width: 400px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div id="sidebar-container"></div>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <h1 class="page-title">Histórico de Uploads</h1>
+      </div>
+
+      <div class="content-body">
+        <div id="alerts-container"></div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Arquivos enviados</h2>
+          </div>
+          <div class="card-body">
+            <div style="margin-bottom: 16px; display: flex; gap: 8px; align-items: center;">
+              <span style="color: var(--text-muted);">Últimos uploads:</span>
+              <button class="btn btn-primary btn-sm" onclick="carregar()">Atualizar</button>
+            </div>
+
+            <div class="table-container">
+              <table class="data-table" id="historyTable">
+                <thead>
+                  <tr>
+                    <th>Arquivo</th>
+                    <th>Status</th>
+                    <th>Data / Hora</th>
+                    <th>Detalhes</th>
+                    <th>Ação</th>
+                  </tr>
+                </thead>
+                <tbody id="historyBody">
+                  <tr>
+                    <td colspan="5" style="text-align: center; color: var(--text-muted);">
+                      Carregando histórico...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/config.js?v=6"></script>
+  <script src="../js/api.js?v=6"></script>
+  <script src="../js/auth.js?v=6"></script>
+  <script src="../js/ui.js?v=6"></script>
+  <script src="../js/sidebar.js?v=6"></script>
+  <script>
+    if (!auth.requireParserConfig()) {
+      throw new Error('Não autenticado');
+    }
+
+    sidebar.init();
+
+    function formatStatus(status) {
+      const labels = {
+        'sucesso': 'Concluído',
+        'erro': 'Erro',
+        'processando': 'Processando',
+      };
+      const cls = {
+        'sucesso': 'status-sucesso',
+        'erro': 'status-erro',
+      };
+      const label = labels[status] || status;
+      const cssClass = cls[status] || 'status-desconhecido';
+      return `<span class="${cssClass}">${label}</span>`;
+    }
+
+    function formatData(isoString) {
+      if (!isoString) return '-';
+      const d = new Date(isoString);
+      return d.toLocaleString('pt-BR');
+    }
+
+    async function carregar() {
+      const tbody = document.getElementById('historyBody');
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="5" style="text-align: center; color: var(--text-muted);">
+            Carregando...
+          </td>
+        </tr>
+      `;
+
+      try {
+        const entries = await api.get(CONFIG.ENDPOINTS.HISTORICO_UPLOADS);
+
+        if (entries.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text-muted);">
+                Nenhum upload encontrado
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = entries.map(item => {
+          const detalhes = item.detalhes
+            ? `<span class="detalhes-cell">${item.detalhes}</span>`
+            : '<span style="color: var(--text-muted);">—</span>';
+
+          return `
+            <tr>
+              <td>${item.arquivo}</td>
+              <td>${formatStatus(item.status)}</td>
+              <td>${formatData(item.data)}</td>
+              <td>${detalhes}</td>
+              <td>
+                <button class="btn btn-primary btn-sm" onclick="exibirDetalhes('${item.arquivo}')" disabled>
+                  Exibir Detalhes
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+      } catch (error) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align: center; color: var(--status-nao-conciliado);">
+              Erro ao carregar histórico: ${error.message}
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    function exibirDetalhes(arquivo) {
+      // Placeholder - será implementado posteriormente
+    }
+
+    carregar();
+  </script>
+</body>
+</html>

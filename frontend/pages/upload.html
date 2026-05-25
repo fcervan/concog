@@ -132,44 +132,23 @@
           </div>
         </div>
 
-        <div class="history-section">
-          <div class="card">
-            <div class="card-header">
-              <h2 class="card-title">Histórico de Uploads</h2>
-            </div>
-            <div class="card-body">
-              <div class="table-container">
-                <table class="data-table" id="historyTable">
-                  <thead>
-                    <tr>
-                      <th>Arquivo</th>
-                      <th>Tipo</th>
-                      <th>Registros</th>
-                      <th>Status</th>
-                      <th>Data</th>
-                    </tr>
-                  </thead>
-                  <tbody id="historyBody">
-                    <tr>
-                      <td colspan="5" style="text-align: center; color: var(--text-muted);">
-                        Nenhum upload realizado ainda
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+        <div style="margin-top: 40px; display: flex; justify-content: center;">
+          <a href="historico-uploads.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; text-decoration: none;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+            Ver Histórico de Uploads
+          </a>
         </div>
       </div>
     </main>
   </div>
 
-  <script src="../js/config.js?v=5"></script>
-  <script src="../js/api.js?v=5"></script>
-  <script src="../js/auth.js?v=5"></script>
-  <script src="../js/ui.js?v=5"></script>
-  <script src="../js/sidebar.js?v=5"></script>
+  <script src="../js/config.js?v=6"></script>
+  <script src="../js/api.js?v=6"></script>
+  <script src="../js/auth.js?v=6"></script>
+  <script src="../js/ui.js?v=6"></script>
+  <script src="../js/sidebar.js?v=6"></script>
   <script>
     // Proteger rota
     if (!auth.requireParserConfig()) {
@@ -294,7 +273,6 @@
             statusText.textContent = '✓ Concluído';
             statusText.style.color = 'var(--status-conciliado)';
             ui.showSuccess(`Arquivo "${result.nome_arquivo}" enviado com sucesso! ${result.mensagem}`);
-            loadHistory();
           } else {
             statusText.textContent = '✗ Erro';
             statusText.style.color = 'var(--status-nao-conciliado)';
@@ -321,39 +299,7 @@
       }
     }
 
-    async function loadHistory() {
-      try {
-        const history = await api.get(CONFIG.ENDPOINTS.UPLOAD_HISTORY);
-        const tbody = document.getElementById('historyBody');
 
-        if (history.length === 0) {
-          tbody.innerHTML = `
-            <tr>
-              <td colspan="5" style="text-align: center; color: var(--text-muted);">
-                Nenhum upload realizado ainda
-              </td>
-            </tr>
-          `;
-          return;
-        }
-
-        tbody.innerHTML = history.map(item => `
-          <tr>
-            <td>${item.nome_arquivo}</td>
-            <td>${item.tipo_arquivo.toUpperCase()}</td>
-            <td>${item.total_registros}</td>
-            <td>${ui.getStatusBadge(item.status)}</td>
-            <td>${ui.formatDateTime(item.processado_em)}</td>
-          </tr>
-        `).join('');
-
-      } catch (error) {
-        console.error('Erro ao carregar histórico:', error);
-      }
-    }
-
-    // Carregar histórico ao iniciar
-    loadHistory();
   </script>
 </body>
 </html>

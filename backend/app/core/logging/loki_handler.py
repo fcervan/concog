@@ -24,10 +24,15 @@ class LokiHandler(logging.Handler):
             if record.exc_info and record.exc_info[0]:
                 log_entry["exception"] = self.format(record)
 
+            labels = {**self.labels}
+            extra_labels = getattr(record, "loki_labels", None)
+            if extra_labels:
+                labels.update(extra_labels)
+
             payload = {
                 "streams": [
                     {
-                        "stream": self.labels,
+                        "stream": labels,
                         "values": [
                             [str(int(datetime.now(timezone.utc).timestamp() * 1e9)), json.dumps(log_entry)]
                         ]
